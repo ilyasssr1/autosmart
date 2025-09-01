@@ -1,12 +1,750 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <link rel="stylesheet" href="css/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autosmart</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoSmart - Find your ideal car in just a few clicks</title>
+
+    <!-- swiper css link from gg-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+   <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <script src="https://kit.fontawesome.com/7619041291.js" crossorigin="anonymous"></script>
+  
+
 </head>
-<body>
-    <h1>Bienvenue sur Autosmart</h1>
-</body>
+  </head>
+
+  <body>
+    <!-- top header section -->
+    <div class="top-header">
+      <div class="out-box">
+        <div class="inside-box">
+          <div class="col-1">
+            <span><i class="bx bxs-envelope"></i> info@autosmart.com</span>
+            <span><i class="bx bxs-phone"></i> +212 650 438 029</span>
+            <span><i class="bx bxs-alarm"></i> Mon - Sat (08 AM - 11 PM)</span>
+          </div>
+
+          <div class="col-2">
+            <a href="/signup/login.html"><i class="bx bx-arrow-to-right"></i> Login</a>
+            <a href="/signup/logout.html"><i class="bx bxs-user"></i> Register</a>
+            <span>Follow Us:</span>
+            <div class="social">
+              <i class="bx bxl-facebook"></i>
+              <i class="fa-brands fa-x-twitter" style="font-size: 1.35rem; margin-top: 1.5px;"></i>
+              <i class="bx bxl-instagram"></i>
+              <i class="bx bxl-linkedin"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!---NAVBAAAR -->
+    <header class="header">
+      <div class="logo">
+        <img src="./img/logo.png" alt="AutoSmart Logo" />
+      </div>
+      <nav>
+        <div class="navbar">
+          
+            <ul class="navLinks">
+              <li><a href="./index.html" class="active">Home</a></li>
+              <li><a href="#">Buy Car</a></li>
+              <li><a href="#">Sell Car</a></li>
+              <li><a href="#">Cart</a></li>
+              <li><a href="#">Login / Register</a></li>
+
+              <li><a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
+                  <ul class="dropy">
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/team.html">Our Team</a></li>
+                    <li><a href="/price.html">Pricing Plan</a></li>
+                    <li><a href="/calculator.html">Calculator</a></li>
+                    <li><a href="/map-prices.html">Prix par Région</a></li>
+                    <li><a href="#">FAQ</a></li>
+                  </ul>
+              </li>
+              <li><a href="/contact.html">Contact </a></li>
+            </ul>
+        </div>
+         <div class="others">
+            <i class="bx bx-cart-plus "></i>
+            <i class="fa-solid fa-cart-plus cart"></i>
+            <i class="fa-solid fa-bars" id="menuBtn"></i>
+          </div>
+      </nav>
+    </header>
+
+    <!--   HOME    -->
+    <div class="home">
+        <div class="swiper myHomy">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slide slide-one">
+
+          <div class="col-1">
+              <h4> Welcome to AutoSmart !</h4>
+              <h1>best way to find <br> your <span> dream </span> car </h1>
+              <p>Discover the perfect vehicle that matches your lifestyle and budget with our extensive collection of premium cars.</p>
+          </div>    
+
+          <div class="col-2">
+            <img src="./img/car1.png" alt="Luxury car">
+          </div>
+      </div>
+      <div class="swiper-slide slide slide-two">
+          <div class="col-1">
+                <h4> Welcome to AutoSmart !</h4>
+                <h1>best way to find <br> your <span> dream </span> car </h1>
+                <p>Experience the thrill of driving with our selection of high-performance vehicles from top brands worldwide.</p>
+            </div>    
+
+            <div class="col-2">
+              <img src="./img/car2.png" alt="Sports car">
+            </div>
+      </div>
+        <div class="swiper-slide slide slide-three">
+          <div class="col-1">
+                <h4> Welcome to AutoSmart !</h4>
+                <h1>best way to find <br> your <span> dream </span> car </h1>
+                <p>Family-friendly vehicles with advanced safety features and spacious interiors for your comfort and peace of mind.</p>
+            </div>    
+
+            <div class="col-2">
+              <img src="./img/car3.png" alt="Family SUV">
+            </div>
+      </div>
+      
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+ 
+   </div>
+
+    </div>
+
+     <!-- markettttttttttttt-->
+      <section class="market">
+        <div class="col-3">
+          <img  class="one" src="./img/carr01.png" alt="Luxury sedan">
+          <div class="service">
+            <img class="two" src="/img/icones/icon5.png" alt="Service team">
+            <span >30 years of <br> quality service </span>
+          </div>
+        </div>
+        <div class="col-4">
+          <h4><i class="fa-solid fa-car"></i>About us </h4>
+          <h3>World largest <span> Car <br>Dealer </span>Marketplace.  </h3>
+          <p class="text">
+            AutoSmart has been a trusted name in the automotive industry for three decades, connecting buyers with their perfect vehicles through our extensive network of certified dealers worldwide.
+          </p>
+          <p class="p1"><i class="fa-solid fa-forward-step"></i>Over 10,000 certified vehicles in stock</p>
+          <p class="p1"><i class="fa-solid fa-forward-step"></i>Global network of trusted dealers</p>
+          <p class="p1"><i class="fa-solid fa-forward-step"></i>Comprehensive vehicle history reports</p>
+
+        </div>
+      </section>
+     <!--   arrivals     -->
+
+<section class="arrivals">
+  <h4><i class="fa-solid fa-car"></i> New Arrivals</h4>
+  <h1>Let's check the latest <span>cars</span></h1>
+
+  <div class="arr-row">
+
+    <!-- 1. Mercedes-Benz E-Class -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca1.png" alt="2023 Mercedes-Benz E-Class"></div>
+      <h5>Mercedes-Benz E-Class</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
+        </div>
+        <div class="review"><span>4.8 (5.8k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 10.15 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Hybrid</span>
+      </div>
+      <div class="price"><p>$65,800</p></div>
+    </div>
+
+    <!-- 2. BMW 5 Series -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca2.png" alt="2023 BMW 5 Series"></div>
+      <h5>BMW 5 Series</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
+        </div>
+        <div class="review"><span>4.7 (4.2k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 8.25 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Petrol</span>
+      </div>
+      <div class="price"><p>$58,900</p></div>
+    </div>
+
+    <!-- 3. Audi Q7 -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca3.png" alt="2023 Audi Q7"></div>
+      <h5>Audi Q7 Premium</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
+        </div>
+        <div class="review"><span>4.9 (3.7k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 12.45 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Diesel</span>
+      </div>
+      <div class="price"><p>$72,500</p></div>
+    </div>
+
+    <!-- 4. Tesla Model 3 -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca4.png" alt="2023 Tesla Model 3"></div>
+      <h5>Tesla Model 3</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <div class="review"><span>5.0 (6.3k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 520 km/charge</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Electric</span>
+      </div>
+      <div class="price"><p>$45,628</p></div>
+    </div>
+
+    <!-- 5. Porsche 911 Carrera -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca7.png" alt="2023 Porsche 911"></div>
+      <h5>Porsche 911 Carrera</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <div class="review"><span>5.0 (2.8k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 3.15 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Petrol</span>
+      </div>
+      <div class="price"><p>$112,400</p></div>
+    </div>
+
+    <!-- 6. Lexus RX 350 -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca8.png" alt="2023 Lexus RX"></div>
+      <h5>Lexus RX 350</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
+        </div>
+        <div class="review"><span>4.7 (4.1k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 9.75 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Hybrid</span>
+      </div>
+      <div class="price"><p>$54,300</p></div>
+    </div>
+
+    <!-- 7. Ford Mustang GT -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca9.png" alt="2023 Ford Mustang GT"></div>
+      <h5>Ford Mustang GT</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="review"><span>4.6 (3.9k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 7.20 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Petrol</span>
+      </div>
+      <div class="price"><p>$42,500</p></div>
+    </div>
+
+    <!-- 8. Toyota RAV4 -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca10.png" alt="2023 Toyota RAV4"></div>
+      <h5>Toyota RAV4 Hybrid</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
+        </div>
+        <div class="review"><span>4.8 (5.2k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 11.35 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Hybrid</span>
+      </div>
+      <div class="price"><p>$35,200</p></div>
+    </div>
+
+    <!-- 9. Nissan GT-R -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca11.png" alt="2023 Nissan GT-R"></div>
+      <h5>Nissan GT-R</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="review"><span>4.6 (2.1k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 6.10 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Petrol</span>
+      </div>
+      <div class="price"><p>$99,800</p></div>
+    </div>
+
+    <!-- 10. Chevrolet Camaro -->
+    <div class="arr-col">
+      <div class="image"><img src="./img/ca12.png" alt="2023 Chevrolet Camaro"></div>
+      <h5>Chevrolet Camaro</h5>
+      <div class="rating">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half"></i>
+        </div>
+        <div class="review"><span>4.5 (3.2k Reviews)</span></div>
+      </div>
+      <div class="features">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Automatic</span>
+        <span><i class="fa-solid fa-tag"></i> 7.85 km/l</span>
+        <span><i class="fa-solid fa-car"></i> Model 2023</span>
+        <span><i class="fa-solid fa-bullseye"></i> Petrol</span>
+      </div>
+      <div class="price"><p>$39,500</p></div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- body typeeeeee-->
+
+    <section class="type">
+      <h4><i class="fa fa-car"></i> Category</h4>
+      <h1>Car By Body <span>Types </span></h1>
+
+      <div class="type-row">
+        <div class="type-col">
+          <img src="/img/carr1.png" alt="Sedan car">
+          <h5>Sedan</h5>
+        </div>
+
+        
+        <div class="type-col">
+          <img src="/img/carr2.png" alt="Compact car">
+          <h5>Compact</h5>
+        </div>
+
+        
+        <div class="type-col">
+          <img src="/img/carr3.png" alt="Convertible car">
+          <h5>Convertible</h5>
+        </div>
+
+        
+        <div class="type-col">
+          <img src="/img/carr4.png" alt="SUV car">
+          <h5>SUV</h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr5.png" alt="Crossover car">
+          <h5>Crossover</h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr6.png" alt="Wagon car">
+          <h5>Wagon</h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr7.png" alt="Sports car">
+          <h5>Sports</h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr8.png" alt="Pickup truck">
+          <h5>Pickup</h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr9.png" alt="Family MPV">
+          <h5>Family MPV </h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr10.png" alt="Coupe car">
+          <h5>Coupe</h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr11.png" alt="Electric car">
+          <h5>Electric</h5>
+        </div>
+
+        <div class="type-col">
+          <img src="/img/carr12.png" alt="Luxury car">
+          <h5>Luxury</h5>
+        </div>
+
+       
+      </div>
+    </section>
+
+    <!-- dealerrrrr-->
+
+    <section class="dealer">
+      <h4><i class="fa fa-car"></i> Car Dealers</h4>
+      <h1>Best Dealer In <span>Morocco</span></h1>
+
+      <div class="deal-row">
+        <div class="deal-col">
+          <div class="image">
+            <img src="/img/dealers/dealer1.png" alt="Premium Auto Dealership">
+          </div>
+          <div class="list">
+            <span>High Service</span>
+          </div>
+          <h5> Premium Drive</h5>
+          <p><i class="fa-solid fa-location-dot"></i> Route principale n° 3011, Bouskoura – Casablanca</p>
+          <p><i class="fa-solid fa-phone"></i> +212 522-363-344</p>
+        </div>
+
+        <div class="deal-col">
+      <div class="image">
+        <img src="/img/dealers/dealer2.png" alt="Click'n'go Car Hire">
+      </div>
+      <div class="list">
+        <span>Highly Rated</span>
+      </div>
+      <h5>Click'n'go Car Hire</h5>
+      <p><i class="fa-solid fa-location-dot"></i> Galerie Mamounia Business Center, Bureau n°27, Agadir 80000, Morocco</p>
+      <p><i class="fa-solid fa-phone"></i> +212 528-555-202</p>
+      <p><i class="fa-solid fa-globe"></i> <a href="https://www.car-rental-agadir.com/" target="_blank">car-rental-agadir.com</a></p>
+    </div>
+
+    <!-- Haussmann Auto -->
+    <div class="deal-col">
+      <div class="image">
+        <img src="/img/dealers/dealer3.jpeg" alt="Haussmann Auto">
+      </div>
+      <div class="list">
+        <span>Premium Vehicles</span>
+      </div>
+      <h5>Haussmann Auto</h5>
+      <p><i class="fa-solid fa-location-dot"></i> 639 Boulevard Mohamed V, Casablanca 20250, Morocco</p>
+      <p><i class="fa-solid fa-phone"></i> +212 661-098121</p>
+      <p><i class="fa-solid fa-globe"></i> <a href="https://www.avito.ma" target="_blank">avito.ma</a></p>
+    </div>
+
+    <!-- Luxury Motors -->
+    <div class="deal-col">
+      <div class="image">
+        <img src="/img/dealers/dealer4.png" alt="Luxury Motors">
+      </div>
+      <div class="list">
+        <span>Exclusive Brands</span>
+      </div>
+      <h5>Luxury Motors</h5>
+      <p><i class="fa-solid fa-location-dot"></i> Rue Houtaine, Résidence Assalam N°10, Tanger 90060, Morocco</p>
+      <p><i class="fa-solid fa-phone"></i> +212 539-954-172</p>
+      <p><i class="fa-solid fa-globe"></i> <a href="https://luxurymotors.ma/" target="_blank">luxurymotors.ma</a></p>
+    </div>
+
+    <!-- Capital Automobile Ltd -->
+    <div class="deal-col">
+      <div class="image">
+        <img src="/img/dealers/dealer5.png" alt="Capital Automobile Ltd">
+      </div>
+      <div class="list">
+        <span>Imported Vehicles</span>
+      </div>
+      <h5>Capital Automobile Ltd</h5>
+      <p><i class="fa-solid fa-location-dot"></i> Morcellemont Saint André, Mauritius</p>
+      <p><i class="fa-solid fa-phone"></i> +212 537-555-202</p>
+      <p><i class="fa-solid fa-globe"></i> <a href="https://www.facebook.com/capitalmru/" target="_blank">capitalmru</a></p>
+    </div>
+
+    <!-- Bay Area Autos -->
+    <div class="deal-col">
+      <div class="image">
+        <img src="/img/dealers/dealer6.jpeg" alt="Bay Area Autos">
+      </div>
+      <div class="list">
+        <span>Local Dealership</span>
+      </div>
+      <h5>Bay Area Autos</h5>
+      <p><i class="fa-solid fa-location-dot"></i> Boulevard Abdelmoumen, Casablanca, Morocco</p>
+      <p><i class="fa-solid fa-phone"></i> +212 522-555-707</p>
+      <p><i class="fa-solid fa-globe"></i> <a href="https://www.facebook.com/bayareaautos/" target="_blank">bayareaautos</a></p>
+    </div>
+
+    <!-- Sunshine Motors -->
+    <div class="deal-col">
+      <div class="image">
+        <img src="/img/dealers/dealer7.jpg" alt="Sunshine Motors">
+      </div>
+      <div class="list">
+        <span>Reliable Rentals</span>
+      </div>
+      <h5>Sunshine Motors</h5>
+      <p><i class="fa-solid fa-location-dot"></i> Avenue des FAR, Agadir, Morocco</p>
+      <p><i class="fa-solid fa-phone"></i> +212 528-555-505</p>
+      <p><i class="fa-solid fa-globe"></i> <a href="https://www.suncitycarsrental.com/" target="_blank">suncitycarsrental.com</a></p>
+    </div>
+
+    <!-- Metro Auto Group -->
+    <div class="deal-col">
+      <div class="image">
+        <img src="/img/dealers/dealer8.jpeg" alt="Metro Auto Group">
+      </div>
+      <div class="list">
+        <span>Industrial Zone</span>
+      </div>
+      <h5>Metro Auto Group</h5>
+      <p><i class="fa-solid fa-location-dot"></i> Quartier Industriel, Tanger, Morocco</p>
+      <p><i class="fa-solid fa-phone"></i> +212 539-555-404</p>
+     
+     </div>
+    </div>
+  </section>
+
+
+    <!-- Quality sectionn -->
+
+    <section class="quality">
+      <div class="qul-row">
+        <div class="col-1">
+          
+          <div class="qul-one">
+            <div class="number">
+                <img src="/img/quality/q1.png" alt="Quality Certification">
+                <h2>01</h2>
+            </div>
+            <h5>Best Quality Cars</h5>
+            <p>Every vehicle in our inventory undergoes a rigorous 150-point inspection to ensure premium quality and reliability.</p>
+          </div>
+
+          <div class="qul-one">
+            <div class="number">
+                <img src="/img/quality/q2.png" alt="Mechanic Certification">
+                <h2>02</h2>
+            </div>
+            <h5>Certified Mechanics</h5>
+            <p>Our team of ASE-certified technicians provides expert maintenance and repair services using genuine parts.</p>
+          </div>
+
+         
+        </div>
+        <div class="col-1 center">
+           <div class="qul-one">
+            <div class="number">
+              <img src="/img/quality/q3.png" alt="Popular Brands">
+              <h2>03</h2>
+            </div>
+            <h5>Popular Brands</h5>
+            <p>We feature an extensive selection of vehicles from the world's most trusted and sought-after automotive brands.</p>
+          </div>
+
+          <div class="qul-one">
+            <div class="number">
+              <img src="/img/quality/q4.png" alt="Reasonable Pricing">
+              <h2>04</h2>
+            </div>
+            <h5>Reasonable Price </h5>
+            <p>Enjoy competitive pricing, transparent deals, and various financing options tailored to your budget.</p>
+          </div>
+        </div>
+          <div class="col-2">
+            <h4><i class="fa fa-car"></i>why choose us</h4>
+            <h3>we are dedicated <span> to <br> provide </span> quality service</h3>
+            <p>With over 30 years of experience in the automotive industry, AutoSmart has built a reputation for excellence, integrity, and customer satisfaction. Our commitment to quality service ensures you drive away with confidence.</p>
+
+            <img src="./img/car3.png" alt="Quality service vehicle">
+          </div>
+      </div>
+    </section>
+
+    <!-- clienttttt testimonials -->
+
+    <section class="client">
+      <h4><i class="fa fa-car"></i>Testimonials</h4>
+      <h1>What Our Client <span> Say's</span></h1>
+
+    <div class="swiper myClient">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide slide">
+              <img src="/img/testimonials/gerald-novak.1024x1024.jpg" alt="Client Gerald Novak">
+              <h5>Gerald Novak</h5>
+              <span>Customer</span>
+              <p>"AutoSmart made my car buying experience effortless. Their knowledgeable staff helped me find the perfect SUV for my family's needs at a great price!"</p>
+              <div class="stars">
+                  <i class="fa fa-star"></i>
+                   <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half"></i>
+              </div>
+        </div>
+        <div class="swiper-slide slide"><img src="/img/testimonials/images.jpeg" alt="Client Sarah Johnson">
+              <h5>Sarah Johnson</h5>
+              <span>Customer</span>
+              <p>"I've purchased two vehicles from AutoSmart now, and both experiences were outstanding. Their after-sales service is just as impressive as their sales process."</p>
+              <div class="stars">
+                  <i class="fa fa-star"></i>
+                   <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+              </div>
+            </div>
+        <div class="swiper-slide slide"><img src="/img/testimonials/test3.jpg" alt="Client Michael Chen">
+              <h5>Michael Chen</h5>
+              <span>Customer</span>
+              <p>"As a first-time car buyer, I was nervous about the process. The team at AutoSmart guided me through every step and found me a reliable vehicle within my budget."</p>
+              <div class="stars">
+                  <i class="fa fa-star"></i>
+                   <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+              </div>
+            </div>
+        <div class="swiper-slide slide"><img src="/img/testimonials/test4.jpg" alt="Client Maria Rodriguez">
+              <h5>Maria Rodriguez</h5>
+              <span>Customer</span>
+              <p>"The vehicle history report provided was incredibly detailed. I appreciate the transparency and honesty throughout the entire purchasing process."</p>
+              <div class="stars">
+                  <i class="fa fa-star"></i>
+                   <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half"></i>
+              </div>
+            </div>
+        <div class="swiper-slide slide"><img src="/img/testimonials/test5.jpeg" alt="Client James Wilson">
+              <h5>James Wilson</h5>
+              <span>Customer</span>
+              <p>"Their online inventory system is fantastic! I found exactly what I was looking for before even visiting the dealership. The entire experience was seamless."</p>
+              <div class="stars">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+              </div>
+            </div>
+        
+      </div>
+      
+    </div>
+    </section>
+
+    <!-- footer -->
+     <div class="footer">
+      <div class="footer-row">
+        <div class="footer-col">
+          <img src="./img/logo2footer.png" alt="AutoSmart Logo">
+          <p class="text">AutoSmart is your trusted partner in finding the perfect vehicle. With three decades of experience, we connect you to quality cars and exceptional service.</p>
+          <span><i class="fa fa-phone"></i>+212 650 438 029</span>
+          <span><i class="fa fa-location-dot"></i>123 Automotive Avenue, Agadir 80000</span>
+          <span><i class="bx bxs-envelope"></i>info@autosmart.com</span>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="/about.html"><i class="fa-solid fa-arrow-right"></i>About Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Testimonials  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Terms of Services  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Our Dealers </a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Support Center</h5>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>FAQ's</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Affiliates</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Booking Tips</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sell Vehicles  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Contact Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sitemap</a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p class="text">Subscribe to our newsletter to receive updates on new arrivals, special offers, and automotive tips.</p>
+          <input type="text" placeholder="Your Email">
+          <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
+
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025 <span> AutoSmart</span> All Right Reserved.</p>
+        <div class="social">
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-linkedin"></i>
+          <i class="bx bxl-instagram"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+
+      <!-- scroll top button adding-->
+       <a href="#" class="scrollBtn">
+        <i class="bx bxs-chevrons-up"></i>
+       </a>
+     </div>
+     
+
+      
+
+
+     <!--   siper js link     -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
 </html>

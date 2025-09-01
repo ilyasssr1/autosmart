@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoSmart - Find your ideal car in just a few clicks</title>
+
+    <!-- swiper css link from gg-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <script src="https://kit.fontawesome.com/7619041291.js" crossorigin="anonymous"></script>
+  
+
+</head>
+  </head>
+
+  <body>
+    <!-- top header section -->
+    <div class="top-header">
+      <div class="out-box">
+        <div class="inside-box">
+          <div class="col-1">
+            <span><i class="bx bxs-envelope"></i> info@autosmart.com</span>
+            <span><i class="bx bxs-phone"></i> +212 650 438 029</span>
+            <span><i class="bx bxs-alarm"></i> Mon - Sat (08 AM - 11 PM)</span>
+          </div>
+
+          <div class="col-2">
+            <a href="/signup/login.html"><i class="bx bx-arrow-to-right"></i> Login</a>
+            <a href="/signup/logout.html"><i class="bx bxs-user"></i> Register</a>
+            <span>Follow Us:</span>
+            <div class="social">
+              <i class="bx bxl-facebook"></i>
+              <i class="fa-brands fa-x-twitter" style="font-size: 1.35rem; margin-top: 1.5px;"></i>
+              <i class="bx bxl-instagram"></i>
+              <i class="bx bxl-linkedin"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="logo">
+        <img src="/img/logo.png" alt="AutoSmart Logo" />
+      </div>
+
+      <nav>
+        <div class="navbar">
+          <ul class="navLinks">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#" >Buy Car</a></li>
+            <li><a href="#" class="active">Sell Car</a></li>
+            <li><a href="#">Login / Register</a></li>
+            <li>
+              <a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropy">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/team.html">Our Team</a></li>
+                <li><a href="/price.html">Pricing Plan</a></li>
+                <li><a href="/calculator.html">Calculator</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="others">
+          <!-- Mini-cart intégré -->
+          <div class="cart-container" id="site-cart">
+            <button class="cart-button" id="cart-button" aria-label="Open cart">
+              <i class="bx bx-cart"></i>
+              <span class="cart-count" id="cart-count">0</span>
+            </button>
+
+            <!-- Dropdown cart -->
+            <div class="cart-dropdown" id="cart-dropdown" aria-hidden="true">
+              <div class="cart-head">
+                <strong>My Cart</strong>
+                <button class="cart-clear" id="cart-clear" title="Clear cart">Clear All</button>
+              </div>
+
+              <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here by JavaScript -->
+                <div class="empty-cart-message">Your cart is empty</div>
+              </div>
+
+              <div class="cart-foot">
+                <div class="cart-total">
+                  <span>Total</span>
+                  <strong id="cart-total">$0</strong>
+                </div>
+                <div class="cart-actions">
+                  <a href="cart.php" class="btn checkout" id="checkout-btn">Checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- menu burger -->
+          <i class="fa-solid fa-bars" id="menuBtn"></i>
+        </div>
+      </nav>
+    </header>
+        <!-- Sell Sec -->
+  <div class="sell-container">
+  <div class="sell-header">
+    <div class="sell-logo">
+      <i class="fas fa-car"></i>
+      AutoSmart Premium
+    </div>
+    <h1 class="sell-title">Vendre Votre Véhicule</h1>
+    <p class="sell-subtitle">Profitez de notre plateforme premium pour vendre votre véhicule rapidement et au meilleur prix. Remplissez le formulaire ci-dessous pour commencer.</p>
+  </div>
+
+  <form id="sellForm" class="sell-form">
+    <!-- Section Informations véhicule -->
+    <div class="form-section">
+      <i class="fas fa-info-circle"></i>
+      Informations générales
+    </div>
+    
+    <div class="form-group suggestions-container">
+      <label for="brand">Marque du véhicule <span class="required">*</span></label>
+      <input type="text" id="brand" name="brand" required placeholder="Commencez à taper pour voir les suggestions">
+      <div class="suggestions-list" id="brandSuggestions"></div>
+      <div class="other-brand-input" id="otherBrandContainer">
+        <input type="text" id="otherBrand" name="otherBrand" placeholder="Précisez la marque">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="model">Modèle <span class="required">*</span></label>
+      <input type="text" id="model" name="model" required placeholder="Ex: Classe A, Série 3, etc.">
+    </div>
+
+    <div class="form-group">
+      <label for="year">Année de fabrication <span class="required">*</span></label>
+      <input type="number" id="year" name="year" min="1900" max="2099" required>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Prix demandé (€) <span class="required">*</span></label>
+      <input type="number" id="price" name="price" required>
+    </div>
+
+    <div class="form-group">
+      <label for="mileage">Kilométrage <span class="required">*</span></label>
+      <input type="number" id="mileage" name="mileage" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fuel">Carburant <span class="required">*</span></label>
+      <select id="fuel" name="fuel" required>
+        <option value="">Sélectionnez un type</option>
+        <option value="Essence">Essence</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Hybride">Hybride</option>
+        <option value="Électrique">Électrique</option>
+        <option value="GPL">GPL</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="transmission">Transmission <span class="required">*</span></label>
+      <select id="transmission" name="transmission" required>
+        <option value="">Sélectionnez un type</option>
+        <option value="Manuelle">Manuelle</option>
+        <option value="Automatique">Automatique</option>
+        <option value="Séquentielle">Séquentielle</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="power">Puissance (CV) <span class="required">*</span></label>
+      <input type="number" id="power" name="power" required>
+    </div>
+
+    <!-- Section Caractéristiques -->
+    <div class="form-section">
+      <i class="fas fa-cogs"></i>
+      Caractéristiques
+    </div>
+
+    <div class="form-group">
+      <label for="color">Couleur extérieure <span class="required">*</span></label>
+      <input type="text" id="color" name="color" required>
+    </div>
+
+    <div class="form-group">
+      <label for="interior">Couleur intérieure</label>
+      <input type="text" id="interior" name="interior">
+    </div>
+
+    <div class="form-group">
+      <label for="doors">Nombre de portes <span class="required">*</span></label>
+      <select id="doors" name="doors" required>
+        <option value="">Sélectionnez</option>
+        <option value="2">2 portes</option>
+        <option value="3">3 portes</option>
+        <option value="4">4 portes</option>
+        <option value="5">5 portes</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="seats">Nombre de places <span class="required">*</span></label>
+      <select id="seats" name="seats" required>
+        <option value="">Sélectionnez</option>
+        <option value="2">2 places</option>
+        <option value="4">4 places</option>
+        <option value="5">5 places</option>
+        <option value="7">7 places</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="features">Équipements et options</label>
+      <textarea id="features" name="features" placeholder="Climatisation, GPS, Sièges chauffants, etc."></textarea>
+    </div>
+
+    <!-- Section Photos -->
+    <div class="form-section">
+      <i class="fas fa-camera"></i>
+      Photos du véhicule
+    </div>
+
+    <div class="form-group full-width">
+      <div class="image-upload">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Glissez-déposez vos images ici ou cliquez pour parcourir</p>
+        <label for="carImages" class="upload-btn">
+          <i class="fas fa-plus"></i> Sélectionner des images
+        </label>
+        <input type="file" id="carImages" name="carImages" multiple accept="image/*" style="display: none;">
+      </div>
+      <div id="preview"></div>
+    </div>
+
+    <!-- Section Description -->
+    <div class="form-section">
+      <i class="fas fa-align-left"></i>
+      Description
+    </div>
+
+    <div class="form-group full-width">
+      <label for="desc">Description détaillée <span class="required">*</span></label>
+      <textarea id="desc" name="desc" required placeholder="Décrivez votre véhicule en détail..."></textarea>
+    </div>
+
+    <!-- Section Contact -->
+    <div class="form-section">
+      <i class="fas fa-user"></i>
+      Informations de contact
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">Prénom <span class="required">*</span></label>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Nom <span class="required">*</span></label>
+      <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email <span class="required">*</span></label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Téléphone <span class="required">*</span></label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Localisation <span class="required">*</span></label>
+      <input type="text" id="location" name="location" required placeholder="Ville et code postal">
+    </div>
+
+    <button type="submit" class="submit-btn">
+      <i class="fas fa-check-circle"></i> Publier l'annonce
+    </button>
+
+    <div class="success-message" id="successMsg">
+      <i class="fas fa-check-circle"></i>
+      <h3>Votre annonce a été publiée avec succès !</h3>
+      <p>Elle est maintenant en ligne et visible par des milliers d'acheteurs potentiels.</p>
+      <div id="successDetails" style="margin-top: 15px; text-align: left; background: white; padding: 15px; border-radius: 8px;"></div>
+    </div>
+
+    <div class="car-preview" id="carPreview">
+      <h3>Aperçu de votre annonce</h3>
+      <div class="preview-content">
+        <div class="preview-images">
+          <img id="previewMainImage" src="" alt="Véhicule" class="preview-item-3d">
+          <div id="previewGallery" style="display: flex; flex-wrap: wrap;"></div>
+        </div>
+        <div class="preview-details">
+          <div class="preview-detail">
+            <h4>Marque</h4>
+            <p id="previewBrand"></p>
+          </div>
+          <div class="preview-detail">
+            <h4>Modèle</h4>
+            <p id="previewModel"></p>
+          </div>
+          <div class="preview-detail">
+            <h4>Année</h4>
+            <p id="previewYear"></p>
+          </div>
+          <div class="preview-detail">
+            <h4>Kilométrage</h4>
+            <p id="previewMileage"></p>
+          </div>
+          <div class="preview-detail">
+            <h4>Carburant</h4>
+            <p id="previewFuel"></p>
+          </div>
+          <div class="preview-detail">
+            <h4>Prix</h4>
+            <p id="previewPrice" class="price-highlight"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+    <!-- footer -->
+     <div class="footer">
+      <div class="footer-row">
+        <div class="footer-col">
+          <img src="./img/logo2footer.png" alt="AutoSmart Logo">
+          <p class="text">AutoSmart is your trusted partner in finding the perfect vehicle. With three decades of experience, we connect you to quality cars and exceptional service.</p>
+          <span><i class="fa fa-phone"></i>+212 650 438 029</span>
+          <span><i class="fa fa-location-dot"></i>123 Automotive Avenue, Agadir 80000</span>
+          <span><i class="bx bxs-envelope"></i>info@autosmart.com</span>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="/about.html"><i class="fa-solid fa-arrow-right"></i>About Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Testimonials  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Terms of Services  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Our Dealers </a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Support Center</h5>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>FAQ's</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Affiliates</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Booking Tips</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sell Vehicles  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Contact Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sitemap</a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p class="text">Subscribe to our newsletter to receive updates on new arrivals, special offers, and automotive tips.</p>
+          <input type="text" placeholder="Your Email">
+          <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
+
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025 <span> AutoSmart</span> All Right Reserved.</p>
+        <div class="social">
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-linkedin"></i>
+          <i class="bx bxl-instagram"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+
+      <!-- scroll top button adding-->
+       <a href="#" class="scrollBtn">
+        <i class="bx bxs-chevrons-up"></i>
+       </a>
+     </div>
+     
+
+      
+
+
+     <!--   siper js link     -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

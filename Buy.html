@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoSmart - Find your ideal car in just a few clicks</title>
+
+    <!-- swiper css link from gg-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <script src="https://kit.fontawesome.com/7619041291.js" crossorigin="anonymous"></script>
+  
+
+</head>
+  </head>
+
+  <body>
+    <!-- top header section -->
+    <div class="top-header">
+      <div class="out-box">
+        <div class="inside-box">
+          <div class="col-1">
+            <span><i class="bx bxs-envelope"></i> info@autosmart.com</span>
+            <span><i class="bx bxs-phone"></i> +212 650 438 029</span>
+            <span><i class="bx bxs-alarm"></i> Mon - Sat (08 AM - 11 PM)</span>
+          </div>
+
+          <div class="col-2">
+            <a href="/signup/login.html"><i class="bx bx-arrow-to-right"></i> Login</a>
+            <a href="/signup/logout.html"><i class="bx bxs-user"></i> Register</a>
+            <span>Follow Us:</span>
+            <div class="social">
+              <i class="bx bxl-facebook"></i>
+              <i class="fa-brands fa-x-twitter" style="font-size: 1.35rem; margin-top: 1.5px;"></i>
+              <i class="bx bxl-instagram"></i>
+              <i class="bx bxl-linkedin"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="logo">
+        <img src="/img/logo.png" alt="AutoSmart Logo" />
+      </div>
+
+      <nav>
+        <div class="navbar">
+          <ul class="navLinks">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#" class="active">Buy Car</a></li>
+            <li><a href="#">Sell Car</a></li>
+            <li><a href="#">Login / Register</a></li>
+            <li>
+              <a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropy">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/team.html">Our Team</a></li>
+                <li><a href="/price.html">Pricing Plan</a></li>
+                <li><a href="/calculator.html">Calculator</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="others">
+          <!-- Mini-cart intégré -->
+          <div class="cart-container" id="site-cart">
+            <button class="cart-button" id="cart-button" aria-label="Open cart">
+              <i class="bx bx-cart"></i>
+              <span class="cart-count" id="cart-count">0</span>
+            </button>
+
+            <!-- Dropdown cart -->
+            <div class="cart-dropdown" id="cart-dropdown" aria-hidden="true">
+              <div class="cart-head">
+                <strong>My Cart</strong>
+                <button class="cart-clear" id="cart-clear" title="Clear cart">Clear All</button>
+              </div>
+
+              <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here by JavaScript -->
+                <div class="empty-cart-message">Your cart is empty</div>
+              </div>
+
+              <div class="cart-foot">
+                <div class="cart-total">
+                  <span>Total</span>
+                  <strong id="cart-total">$0</strong>
+                </div>
+                <div class="cart-actions">
+                  <a href="cart.php" class="btn checkout" id="checkout-btn">Checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- menu burger -->
+          <i class="fa-solid fa-bars" id="menuBtn"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!--- buyyy sec -->
+    <section class="buy-page">
+      <!-- Hero -->
+      <div class="buy-hero">
+        <div class="buy-hero__text">
+          <h1>Find your next <span>dream car</span></h1>
+          <p>Hand-picked offers. Secure checkout. Fast shipping.</p>
+        </div>
+        <div class="buy-hero__badge"><i class="bx bx-shield"></i> Buyer Protection</div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="buy-toolbar">
+        <div class="buy-toolbar__left">
+          <i class="bx bx-car"></i> <strong> Our Available Cars</strong>
+        </div>
+        <div class="buy-toolbar__right">
+          <select id="sort">
+            <option value="name">Sort: Name</option>
+            <option value="price">Price: Low to High</option>
+            <option value="year">Year: New to Old</option>
+          </select>
+          <input type="search" id="search" placeholder="Search model...">
+        </div>
+      </div>
+
+      <!-- Cars grid -->
+      <div class="cars-grid" id="car-grid"></div>
+
+      <!-- Pagination -->
+      <div class="buy-pagination" id="pagination"></div>
+    </section>
+
+
+    <!-- footer -->
+     <div class="footer">
+      <div class="footer-row">
+        <div class="footer-col">
+          <img src="./img/logo2footer.png" alt="AutoSmart Logo">
+          <p class="text">AutoSmart is your trusted partner in finding the perfect vehicle. With three decades of experience, we connect you to quality cars and exceptional service.</p>
+          <span><i class="fa fa-phone"></i>+212 650 438 029</span>
+          <span><i class="fa fa-location-dot"></i>123 Automotive Avenue, Agadir 80000</span>
+          <span><i class="bx bxs-envelope"></i>info@autosmart.com</span>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="/about.html"><i class="fa-solid fa-arrow-right"></i>About Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Testimonials  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Terms of Services  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Our Dealers </a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Support Center</h5>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>FAQ's</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Affiliates</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Booking Tips</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sell Vehicles  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Contact Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sitemap</a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p class="text">Subscribe to our newsletter to receive updates on new arrivals, special offers, and automotive tips.</p>
+          <input type="text" placeholder="Your Email">
+          <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
+
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025 <span> AutoSmart</span> All Right Reserved.</p>
+        <div class="social">
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-linkedin"></i>
+          <i class="bx bxl-instagram"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+
+      <!-- scroll top button adding-->
+       <a href="#" class="scrollBtn">
+        <i class="bx bxs-chevrons-up"></i>
+       </a>
+     </div>
+     
+
+      
+
+
+     <!--   siper js link     -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

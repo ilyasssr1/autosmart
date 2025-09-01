@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoSmart - Find your ideal car in just a few clicks</title>
+
+    <!-- swiper css link from gg-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="css/style.css?v=1.4" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <script src="https://kit.fontawesome.com/7619041291.js" crossorigin="anonymous"></script>
+  
+  <style>
+    /* Debug styles to ensure hover effects work in login_register.html */
+    .top-header .out-box .inside-box .col-2 a:hover {
+      color: #ff6b35 !important;
+      transform: translateY(-2px) !important;
+      transition: all 0.3s ease !important;
+      text-decoration: underline !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      padding: 5px 10px !important;
+      border-radius: 5px !important;
+    }
+    
+    .top-header .out-box .inside-box .col-2 .social i.bxl-facebook:hover {
+      color: blue !important;
+      transform: scale(1.2) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .top-header .out-box .inside-box .col-2 .social i.bxl-instagram:hover {
+      color: #e4405f !important;
+      transform: scale(1.2) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .top-header .out-box .inside-box .col-2 .social i.fa-x-twitter:hover {
+      color: gray !important;
+      transform: scale(1.2) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .top-header .out-box .inside-box .col-2 .social i.bxl-linkedin:hover {
+      color: #0a66c2 !important;
+      transform: scale(1.2) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .footer {
+      background: #000000 !important;
+    }
+    
+    .footer .footer-bottom {
+      background: #1a1a1a !important;
+    }
+    
+    .footer-row .footer-col a:hover {
+      padding-left: 5px !important;
+      color: #ff6b35 !important;
+      transform: translateX(5px) !important;
+      transition: all 0.3s ease !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      border-radius: 3px !important;
+    }
+    
+    .footer-row .footer-col button:hover {
+      background: #333 !important;
+      border: 2px solid gold !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .footer .footer-bottom .social i:hover {
+      transform: scale(1.1) !important;
+      background: #ff6b35 !important;
+      color: #fff !important;
+      transition: all 0.3s ease !important;
+    }
+  </style>
+
+</head>
+  </head>
+
+  <body>
+    <!-- top header section -->
+    <div class="top-header">
+      <div class="out-box">
+        <div class="inside-box">
+          <div class="col-1">
+            <span><i class="bx bxs-envelope"></i> info@autosmart.com</span>
+            <span><i class="bx bxs-phone"></i> +212 650 438 029</span>
+            <span><i class="bx bxs-alarm"></i> Mon - Sat (08 AM - 11 PM)</span>
+          </div>
+
+          <div class="col-2">
+            <a href="/signup/login.html"><i class="bx bx-arrow-to-right"></i> Login</a>
+            <a href="/signup/logout.html"><i class="bx bxs-user"></i> Register</a>
+            <span>Follow Us:</span>
+            <div class="social">
+              <i class="bx bxl-facebook"></i>
+              <i class="fa-brands fa-x-twitter" style="font-size: 1.35rem; margin-top: 1.5px;"></i>
+              <i class="bx bxl-instagram"></i>
+              <i class="bx bxl-linkedin"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="logo">
+        <img src="/img/logo.png" alt="AutoSmart Logo" />
+      </div>
+
+      <nav>
+        <div class="navbar">
+          <ul class="navLinks">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#" >Buy Car</a></li>
+            <li><a href="#" >Sell Car</a></li>
+            <li><a href="#" class="active">Login / Register</a></li>
+            <li>
+              <a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropy">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/team.html">Our Team</a></li>
+                <li><a href="/price.html">Pricing Plan</a></li>
+                <li><a href="/calculator.html">Calculator</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="others">
+          <!-- Mini-cart intégré -->
+          <div class="cart-container" id="site-cart">
+            <button class="cart-button" id="cart-button" aria-label="Open cart">
+              <i class="bx bx-cart"></i>
+              <span class="cart-count" id="cart-count">0</span>
+            </button>
+
+            <!-- Dropdown cart -->
+            <div class="cart-dropdown" id="cart-dropdown" aria-hidden="true">
+              <div class="cart-head">
+                <strong>My Cart</strong>
+                <button class="cart-clear" id="cart-clear" title="Clear cart">Clear All</button>
+              </div>
+
+              <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here by JavaScript -->
+                <div class="empty-cart-message">Your cart is empty</div>
+              </div>
+
+              <div class="cart-foot">
+                <div class="cart-total">
+                  <span>Total</span>
+                  <strong id="cart-total">$0</strong>
+                </div>
+                <div class="cart-actions">
+                  <a href="cart.php" class="btn checkout" id="checkout-btn">Checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- menu burger -->
+          <i class="fa-solid fa-bars" id="menuBtn"></i>
+        </div>
+      </nav>
+    </header>
+        <!-- login and register Sec -->
+     <section class="register">
+        <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+    
+
+    
+    <div class="container">
+        <div class="header">
+           
+            
+        </div>
+        
+        <div class="tab-buttons">
+            <div class="tab-indicator"></div>
+            <button class="tab-button active" data-tab="login">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Login</span>
+            </button>
+            <button class="tab-button" data-tab="register">
+                <i class="fas fa-user-plus"></i>
+                <span>Register</span>
+            </button>
+        </div>
+        
+        <div id="login" class="tab-content active">
+            <form id="login-form" action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="login-email">
+                        <i class="fas fa-envelope"></i>
+                        Email Address
+                    </label>
+                    <div class="input-with-icon">
+                        <input type="email" id="login-email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <div class="input-focus-border"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="input-with-icon">
+                        <input type="password" id="login-password" name="password" class="form-control" placeholder="Enter your password" required>
+                        <div class="input-focus-border"></div>
+                        <span class="password-toggle" id="login-password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="remember">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Login</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div class="social-login">
+                    <p>Or login with</p>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+                <a href="#" class="switch-tab" data-tab="register">
+                    <i class="fas fa-user-plus"></i>
+                    Don't have an account? Register
+                </a>
+            </form>
+        </div>
+        
+        <div id="register" class="tab-content">
+            <form id="register-form" action="register.php" method="POST" enctype="multipart/form-data">
+                <div class="profile-picture">
+                    <div class="profile-picture-preview" id="profile-picture-preview">
+                        <i class="fas fa-user-plus"></i>
+                        <img id="profile-picture-img" src="" alt="Profile Preview">
+                        <div class="upload-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <input type="file" id="profile-picture-input" class="profile-picture-input" name="profile_picture" accept="image/*">
+                    <p class="profile-picture-text">Click to upload your profile picture</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email">
+                        <i class="fas fa-envelope"></i>
+                        Email Address
+                    </label>
+                    <div class="input-with-icon">
+                        <input type="email" id="register-email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <div class="input-focus-border"></div>
+                    </div>
+                    <div class="validation-message" id="email-validation"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="input-with-icon">
+                        <input type="password" id="register-password" name="password" class="form-control" placeholder="Create a strong password" required>
+                        <div class="input-focus-border"></div>
+                        <span class="password-toggle" id="register-password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="password-requirements" id="password-requirements">
+                        <h6>Password Requirements:</h6>
+                        <ul>
+                            <li id="req-length"><i class="fas fa-circle"></i> At least 8 characters</li>
+                            <li id="req-uppercase"><i class="fas fa-circle"></i> One uppercase letter</li>
+                            <li id="req-lowercase"><i class="fas fa-circle"></i> One lowercase letter</li>
+                            <li id="req-number"><i class="fas fa-circle"></i> One number</li>
+                            <li id="req-special"><i class="fas fa-circle"></i> One special character</li>
+                        </ul>
+                        <div class="password-strength">
+                            <span>Strength:</span>
+                            <div class="password-strength-bar" id="password-strength-bar"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-confirm-password">
+                        <i class="fas fa-lock"></i>
+                        Confirm Password
+                    </label>
+                    <div class="input-with-icon">
+                        <input type="password" id="register-confirm-password" name="confirm_password" class="form-control" placeholder="Confirm your password" required>
+                        <div class="input-focus-border"></div>
+                        <span class="password-toggle" id="confirm-password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="validation-message" id="confirm-password-validation"></div>
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="terms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="newsletter">
+                        <span class="checkmark"></span>
+                        Subscribe to newsletter
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>Create Account</span>
+                    <i class="fas fa-rocket"></i>
+                </button>
+                
+                <div class="social-login">
+                    <p>Or register with</p>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+                
+                <a href="#" class="switch-tab" data-tab="login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Already have an account? Login
+                </a>
+            </form>
+        </div>
+    </div>
+     </section>
+
+    <!-- footer -->
+     <div class="footer">
+      <div class="footer-row">
+        <div class="footer-col">
+          <img src="./img/logo2footer.png" alt="AutoSmart Logo">
+          <p class="text">AutoSmart is your trusted partner in finding the perfect vehicle. With three decades of experience, we connect you to quality cars and exceptional service.</p>
+          <span><i class="fa fa-phone"></i>+212 650 438 029</span>
+          <span><i class="fa fa-location-dot"></i>123 Automotive Avenue, Agadir 80000</span>
+          <span><i class="bx bxs-envelope"></i>info@autosmart.com</span>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="/about.html"><i class="fa-solid fa-arrow-right"></i>About Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Testimonials  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Terms of Services  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Our Dealers </a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Support Center</h5>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>FAQ's</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Affiliates</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Booking Tips</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sell Vehicles  </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Contact Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sitemap</a>
+
+        </div>
+
+         <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p class="text">Subscribe to our newsletter to receive updates on new arrivals, special offers, and automotive tips.</p>
+          <input type="text" placeholder="Your Email">
+          <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
+
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025 <span> AutoSmart</span> All Right Reserved.</p>
+        <div class="social">
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-linkedin"></i>
+          <i class="bx bxl-instagram"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+
+      <!-- scroll top button adding-->
+       <a href="#" class="scrollBtn">
+        <i class="bx bxs-chevrons-up"></i>
+       </a>
+     </div>
+     
+
+      
+
+
+     <!--   siper js link     -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

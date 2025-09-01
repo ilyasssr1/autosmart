@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Calculator Page - AutoSmart</title>
+
+    <!-- swiper css link from gg-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/7619041291.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- top header section -->
+    <div class="top-header">
+      <div class="out-box">
+        <div class="inside-box">
+          <div class="col-1">
+            <span><i class="bx bxs-envelope"></i> info@gmail.com</span>
+            <span><i class="bx bxs-phone"></i> +212 650 438 029</span>
+            <span><i class="bx bxs-alarm"></i> Mon - Sat (08 AM - 11 PM)</span>
+          </div>
+
+          <div class="col-2">
+            <a href="#"><i class="bx bx-arrow-to-right"></i> Login</a>
+            <a href="#"><i class="bx bxs-user"></i> Register</a>
+            <span>Follow Us:</span>
+            <div class="social">
+              <i class="bx bxl-facebook"></i>
+              <i
+                class="fa-brands fa-x-twitter"
+                style="font-size: 1.35rem; margin-top: 1.5px"
+              ></i>
+              <i class="bx bxl-instagram"></i>
+              <i class="bx bxl-linkedin"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!---NAVBAAAR -->
+    <header class="header">
+      <div class="logo">
+        <img src="/img/logo.png" alt="image" />
+      </div>
+      <nav>
+        <div class="navbar">
+          <ul class="navLinks">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li>
+              <a href="#">Inventory<i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropy">
+                <li><a href="/inventory_grid.html">Inventory Grid</a></li>
+                <li><a href="/inventory_list.html">Inventory List</a></li>
+                <li><a href="/inventory_single.html">Inventory Single</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropy">
+                <li><a href="./about.html">About</a></li>
+                <li>
+                  <a href="#"
+                    >Car Listing<i class="fa-solid fa-chevron-down chev"></i
+                  ></a>
+                  <ul class="dropy-two">
+                    <li><a href="#">Listing Grid</a></li>
+                    <li><a href="#">Listing List</a></li>
+                    <li><a href="#">Listing Single</a></li>
+                    <li><a href="#">Compare</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Account</a></li>
+                <li>
+                  <a href="#"
+                    >My Account<i class="fa-solid fa-chevron-down chev"></i
+                  ></a>
+                  <ul class="dropy-three">
+                    <li><a href="#">Dashbord</a></li>
+                    <li><a href="#">My Profile</a></li>
+                    <li><a href="#">My Listing</a></li>
+                    <li><a href="#">Add Listing</a></li>
+                    <li><a href="#">My Favouritea</a></li>
+                    <li><a href="#">Message</a></li>
+                    <li><a href="#">Setting</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"
+                    >Authentication<i class="fa-solid fa-chevron-down chev"></i
+                  ></a>
+                  <ul class="dropy-four">
+                    <li>
+                      <a href="/signup/login.html">Login</a>
+                    </li>
+                    <li>
+                      <a href="/signup/logout.html">Register</a>
+                    </li>
+                    <li>
+                      <a href="/signup/reset.html">Forgot Password</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"
+                    >Services<i class="fa-solid fa-chevron-down chev"></i
+                  ></a>
+                  <ul class="dropy-five">
+                    <li>
+                      <a href="/services/services.html">Services</a>
+                    </li>
+                    <li>
+                      <a href="/services/service_single.html"
+                        >Services Single</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"
+                    >Dealer<i class="fa-solid fa-chevron-down chev"></i
+                  ></a>
+                  <ul class="dropy-six">
+                    <li><a href="#">Dealer</a></li>
+                    <li><a href="#">Dealer Single</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Extra Pages</a></li>
+                <li><a href="/team.html">Our Team</a></li>
+                <li><a href="/price.html">Pricing Plan</a></li>
+                <li>
+                  <a href="/calculator.html" class="active">Calculator</a>
+                </li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Testimonials</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Shop <i class="fa-solid fa-chevron-down chev"></i></a>
+              <ul class="dropy">
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Shop Casting</a></li>
+                <li><a href="#">Shop Checkout</a></li>
+                <li><a href="#">Shop Single</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Contact </a></li>
+          </ul>
+        </div>
+        <div class="others">
+          <i class="bx bx-search"></i>
+          <i class="bx bx-cart-plus"></i>
+          <i class="fa-solid fa-cart-plus cart"></i>
+          <button class="addBTN">
+            <i class="bx bx-plus-circle"></i> Add Listing
+          </button>
+          <i class="fa-solid fa-bars" id="menuBtn"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Calculator Page Sec -->
+    <div class="inventory">
+      <h2>Calculator</h2>
+      <div class="link">
+        <a href="./index.html">Home</a>
+        <span>>>></span>
+        <p>Calculator</p>
+      </div>
+    </div>
+
+    <!-- Calculator section -->
+    <section class="calculator-section">
+      <div class="calculator">
+        <div class="col-row">
+          <div class="cal-col-1">
+            <h2>Financing Calculator</h2>
+            <div class="inputBx">
+              <input type="number" id="price" placeholder="$ Price" />
+            </div>
+            <div class="box">
+              <div class="inputBx">
+                <input type="number" id="rate" placeholder="% Rate" readonly />
+              </div>
+              <div class="inputBx">
+                <input
+                  type="number"
+                  id="period"
+                  placeholder="Loan Period (months)"
+                />
+              </div>
+            </div>
+            <div class="inputBx">
+              <input
+                type="number"
+                id="downPayment"
+                placeholder="$ Down Payment"
+              />
+            </div>
+
+            <a href="#" id="calculateBtn"
+              >Calculate Now <i class="bx bx-right-arrow-alt"></i
+            ></a>
+
+            <div class="result-box" id="resultBox">
+              <h3>Loan Details</h3>
+              <p>
+                Monthly Payment:
+                <span class="highlight" id="monthlyPayment">$0.00</span>
+              </p>
+              <p>
+                Total Interest:
+                <span class="highlight" id="totalInterest">$0.00</span>
+              </p>
+              <p>
+                Total Payment:
+                <span class="highlight" id="totalPayment">$0.00</span>
+              </p>
+              <p>
+                Applied Interest Rate:
+                <span class="highlight" id="appliedRate">0%</span>
+              </p>
+            </div>
+
+            <div class="interest-info">
+              <p>
+                Interest Rates: &lt;$10,000: 3% | $10,000-$30,000: 5% |
+                &gt;$30,000: 7%
+              </p>
+            </div>
+          </div>
+          <div class="cal-col-2">
+            <img
+              src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+              alt="Sports Car"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer-row">
+        <div class="footer-col">
+          <img src="/img/logo2footer.png" alt="logolight" />
+          <p class="text">lorem</p>
+          <span><i class="fa fa-phone"></i>0650438029</span>
+          <span><i class="fa fa-location-dot"></i>Agadir</span>
+          <span><i class="bx bxs-envelope"></i>ilyassarobi@gmail.com</span>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>About Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Update News </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Testimonials </a>
+          <a href="#"
+            ><i class="fa-solid fa-arrow-right"></i>Terms of Services
+          </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Our Dealers </a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Support Center</h5>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>FAQ's</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Affiliates</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Booking Tips</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sell Vehicles </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Contact Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sitmap</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p class="text">lorem lorem lorem lorem lorem lorem</p>
+          <input type="text" placeholder="Your Email" />
+          <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025 <span> AutoSmart</span> All Right Reserved.</p>
+        <div class="social">
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-linkedin"></i>
+          <i class="bx bxl-linkedin"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+
+      <!-- scroll top button adding-->
+      <a href="#" class="scrollBtn">
+        <i class="bx bxs-chevrons-up"></i>
+      </a>
+    </div>
+
+    <!--   siper js link     -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
