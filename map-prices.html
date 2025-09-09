@@ -1,1119 +1,1184 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prix Automobiles par Région - AutoSmart</title>
-    
+
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
     <!-- Boxicons -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/7619041291.js" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://kit.fontawesome.com/7619041291.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
-    
+
     <style>
-        /* Variables CSS pour une cohérence parfaite */
-        :root {
-            --primary-color: #dc2626;
-            --secondary-color: #000000;
-            --accent-color: #ef4444;
-            --success-color: #22c55e;
-            --warning-color: #f59e0b;
-            --danger-color: #dc2626;
-            --dark-color: #000000;
-            --light-color: #f8f9fa;
-            --white: #ffffff;
-            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
-            --shadow-medium: 0 5px 20px rgba(0,0,0,0.15);
-            --shadow-heavy: 0 10px 40px rgba(0,0,0,0.2);
-            --border-radius: 12px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+      /* Variables CSS pour une cohérence parfaite */
+      :root {
+        --primary-color: #dc2626;
+        --secondary-color: #000000;
+        --accent-color: #ef4444;
+        --success-color: #22c55e;
+        --warning-color: #f59e0b;
+        --danger-color: #dc2626;
+        --dark-color: #000000;
+        --light-color: #f8f9fa;
+        --white: #ffffff;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.15);
+        --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.2);
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-        /* Reset et base styles */
-        * {
-            box-sizing: border-box;
-        }
+      /* Reset et base styles */
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-        }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+      }
 
-        /* Container principal avec design moderne */
-        .map-container {
-            min-height: 100vh;
-            background: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
+      /* Container principal avec design moderne */
+      .map-container {
+        min-height: 100vh;
+        background: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
 
+      /* Header avec design premium */
+      .map-header {
+        text-align: center;
+        color: var(--dark-color);
+        padding: 4rem 2rem 2rem;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        margin-bottom: 2rem;
+        border-radius: 0 0 20px 20px;
+      }
 
+      .map-header h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        color: var(--white);
+        letter-spacing: -0.02em;
+      }
 
-        /* Header avec design premium */
+      .map-header p {
+        font-size: 1.25rem;
+        color: var(--white);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Wrapper avec design moderne */
+      .map-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem 4rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Carte avec design premium */
+      #map {
+        height: 700px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-heavy);
+        border: 4px solid var(--white);
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      #map:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Légende avec design moderne */
+      .legend {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        margin-top: 2rem;
+        box-shadow: var(--shadow-medium);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(10px);
+      }
+
+      .legend h3 {
+        margin-bottom: 1.5rem;
+        color: var(--dark-color);
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .legend h3::before {
+        content: "🎯";
+        font-size: 1.2rem;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        border-radius: 8px;
+        transition: var(--transition);
+        background: var(--light-color);
+      }
+
+      .legend-item:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+      }
+
+      .legend-color {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-right: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid var(--white);
+      }
+
+      .legend-item span {
+        font-weight: 500;
+        color: var(--dark-color);
+      }
+
+      /* Container des statistiques avec design moderne */
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .stat-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        text-align: center;
+        box-shadow: var(--shadow-medium);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary-color);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-heavy);
+      }
+
+      .stat-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .stat-card .price {
+        font-size: 2rem;
+        font-weight: 800;
+        color: black;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Popup des régions avec design premium */
+      .region-info {
+        background: var(--white);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        margin-top: 0.5rem;
+        box-shadow: var(--shadow-medium);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        min-width: 300px;
+      }
+
+      .region-info h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .region-info p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        color: var(--dark-color);
+      }
+
+      .region-info strong {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .price-range {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+        gap: 0.5rem;
+      }
+
+      .price-range span {
+        background: linear-gradient(135deg, var(--light-color), #e9ecef);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--dark-color);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        flex: 1;
+        text-align: center;
+      }
+
+      .popular-brands {
+        margin-top: 1rem;
+      }
+
+      .popular-brands strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--dark-color);
+        font-weight: 600;
+      }
+
+      .popular-brands span {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: inline-block;
+        box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+        transition: var(--transition);
+      }
+
+      .popular-brands span:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+      }
+
+      /* Responsive design amélioré */
+      @media (max-width: 768px) {
         .map-header {
-            text-align: center;
-            color: var(--dark-color);
-            padding: 4rem 2rem 2rem;
-            position: relative;
-            z-index: 2;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            margin-bottom: 2rem;
-            border-radius: 0 0 20px 20px;
+          padding: 2rem 1rem 1rem;
         }
 
-        .map-header h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            color: var(--white);
-            letter-spacing: -0.02em;
-        }
-
-        .map-header p {
-            font-size: 1.25rem;
-            color: var(--white);
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 400;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        /* Wrapper avec design moderne */
         .map-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
-            position: relative;
-            z-index: 2;
+          padding: 0 1rem 2rem;
         }
 
-        /* Carte avec design premium */
         #map {
-            height: 700px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-heavy);
-            border: 4px solid var(--white);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
+          height: 500px;
         }
 
-        #map:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        /* Légende avec design moderne */
-        .legend {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            margin-top: 2rem;
-            box-shadow: var(--shadow-medium);
-            border: 1px solid rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px);
-        }
-
-        .legend h3 {
-            margin-bottom: 1.5rem;
-            color: var(--dark-color);
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .legend h3::before {
-            content: '🎯';
-            font-size: 1.2rem;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.75rem;
-            border-radius: 8px;
-            transition: var(--transition);
-            background: var(--light-color);
-        }
-
-        .legend-item:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-        }
-
-        .legend-color {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            margin-right: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            border: 2px solid var(--white);
-        }
-
-        .legend-item span {
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-
-        /* Container des statistiques avec design moderne */
         .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
 
         .stat-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: var(--shadow-medium);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+          padding: 1.5rem;
         }
 
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-color);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .stat-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .stat-card .price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Popup des régions avec design premium */
-        .region-info {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            margin-top: 0.5rem;
-            box-shadow: var(--shadow-medium);
-            border: 1px solid rgba(0,0,0,0.05);
-            min-width: 300px;
-        }
-
-        .region-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .region-info p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            color: var(--dark-color);
-        }
-
-        .region-info strong {
-            color: var(--primary-color);
-            font-weight: 600;
+        .legend {
+          padding: 1.5rem;
         }
 
         .price-range {
-            display: flex;
-            justify-content: space-between;
-            margin: 1rem 0;
-            gap: 0.5rem;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .map-header h1 {
+          font-size: 2rem;
         }
 
-        .price-range span {
-            background: linear-gradient(135deg, var(--light-color), #e9ecef);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--dark-color);
-            border: 1px solid rgba(0,0,0,0.1);
-            flex: 1;
-            text-align: center;
+        .map-header p {
+          font-size: 1rem;
         }
 
-        .popular-brands {
-            margin-top: 1rem;
+        #map {
+          height: 400px;
         }
 
-        .popular-brands strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-            font-weight: 600;
+        .stat-card .price {
+          font-size: 1.5rem;
         }
+      }
 
-        .popular-brands span {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: inline-block;
-            box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
-            transition: var(--transition);
+      /* Animations d'entrée */
+      .map-header,
+      .map-wrapper {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .stat-card {
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .stat-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .stat-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .stat-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .stat-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
         }
-
-        .popular-brands span:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        /* Responsive design amélioré */
-        @media (max-width: 768px) {
-            .map-header {
-                padding: 2rem 1rem 1rem;
-            }
+      /* Scrollbar personnalisée */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
 
-            .map-wrapper {
-                padding: 0 1rem 2rem;
-            }
+      ::-webkit-scrollbar-track {
+        background: var(--light-color);
+      }
 
-            #map {
-                height: 500px;
-            }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border-radius: 4px;
+      }
 
-            .stats-container {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--primary-color)
+        );
+      }
 
-            .stat-card {
-                padding: 1.5rem;
-            }
+      /* Focus states pour l'accessibilité */
+      .stat-card:focus,
+      .legend-item:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+      }
 
-            .legend {
-                padding: 1.5rem;
-            }
+      /* Loading state pour la carte */
+      #map::before {
+        content: "🗺️ Chargement de la carte...";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1.5rem 2.5rem;
+        border-radius: var(--border-radius);
+        z-index: 1000;
+        font-weight: 600;
+        color: var(--dark-color);
+        box-shadow: var(--shadow-medium);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
 
-            .price-range {
-                flex-direction: column;
-            }
+      #map.loaded::before {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+        transition: all 0.3s ease-out;
+      }
+
+      /* Amélioration des popups Leaflet */
+      .leaflet-popup-content-wrapper {
+        border-radius: var(--border-radius) !important;
+        box-shadow: var(--shadow-heavy) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+      }
+
+      .leaflet-popup-tip {
+        box-shadow: var(--shadow-medium) !important;
+      }
+
+      /* Amélioration de la navigation */
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      /* Effet de glassmorphism pour les éléments */
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* Amélioration des boutons et interactions */
+      .interactive-element {
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .interactive-element:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      /* Effet de pulsation pour les marqueurs importants */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
         }
-
-        @media (max-width: 480px) {
-            .map-header h1 {
-                font-size: 2rem;
-            }
-
-            .map-header p {
-                font-size: 1rem;
-            }
-
-            #map {
-                height: 400px;
-            }
-
-            .stat-card .price {
-                font-size: 1.5rem;
-            }
+        50% {
+          transform: scale(1.1);
         }
-
-        /* Animations d'entrée */
-        .map-header, .map-wrapper {
-            animation: fadeInUp 0.8s ease-out;
+        100% {
+          transform: scale(1);
         }
+      }
 
-        .stat-card {
-            animation: fadeInUp 0.8s ease-out;
-            animation-fill-mode: both;
-            opacity: 0;
-            transform: translateY(30px);
-        }
+      .pulse-animation {
+        animation: pulse 2s infinite;
+      }
 
-        .stat-card:nth-child(1) { animation-delay: 0.1s; }
-        .stat-card:nth-child(2) { animation-delay: 0.2s; }
-        .stat-card:nth-child(3) { animation-delay: 0.3s; }
-        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+      /* Section Analytics */
+      .analytics-section {
+        margin-top: 4rem;
+        padding: 2rem;
+        background: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+      }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
 
-        /* Scrollbar personnalisée */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+      .section-header h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
 
-        ::-webkit-scrollbar-track {
-            background: var(--light-color);
-        }
+      .section-header p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 4px;
-        }
+      /* Barre de recherche */
+      .search-container {
+        margin-bottom: 3rem;
+      }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-        }
+      .search-box {
+        display: flex;
+        align-items: center;
+        background: var(--light-color);
+        border-radius: 50px;
+        padding: 0.5rem;
+        box-shadow: var(--shadow-light);
+        max-width: 500px;
+        margin: 0 auto;
+        border: 2px solid transparent;
+        transition: var(--transition);
+      }
 
-        /* Focus states pour l'accessibilité */
-        .stat-card:focus,
-        .legend-item:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
+      .search-box:focus-within {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      }
 
-        /* Loading state pour la carte */
-        #map::before {
-            content: '🗺️ Chargement de la carte...';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255,255,255,0.95);
-            padding: 1.5rem 2.5rem;
-            border-radius: var(--border-radius);
-            z-index: 1000;
-            font-weight: 600;
-            color: var(--dark-color);
-            box-shadow: var(--shadow-medium);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+      .search-box i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        margin: 0 1rem;
+      }
 
-        #map.loaded::before {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.8);
-            transition: all 0.3s ease-out;
-        }
+      .search-box input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 1rem;
+        font-size: 1rem;
+        outline: none;
+        color: var(--dark-color);
+      }
 
-        /* Amélioration des popups Leaflet */
-        .leaflet-popup-content-wrapper {
-            border-radius: var(--border-radius) !important;
-            box-shadow: var(--shadow-heavy) !important;
-            border: 1px solid rgba(0,0,0,0.05) !important;
-        }
+      .search-box input::placeholder {
+        color: #999;
+        font-style: italic;
+      }
 
-        .leaflet-popup-tip {
-            box-shadow: var(--shadow-medium) !important;
-        }
+      .search-box button {
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
 
+      .search-box button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
 
+      /* Graphiques */
+      .charts-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
 
-        /* Amélioration de la navigation */
-        .header {
-            background: rgba(255,255,255,0.95);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
+      .chart-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
 
-        /* Effet de glassmorphism pour les éléments */
-        .glass-effect {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+      .chart-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-medium);
+      }
 
-        /* Amélioration des boutons et interactions */
-        .interactive-element {
-            cursor: pointer;
-            transition: var(--transition);
-        }
+      .chart-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
 
-        .interactive-element:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
+      .chart-card canvas {
+        width: 100% !important;
+        height: 300px !important;
+      }
 
-        /* Effet de pulsation pour les marqueurs importants */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+      /* Classements */
+      .rankings-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
 
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
+      .ranking-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
 
-        /* Section Analytics */
+      .ranking-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .ranking-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .ranking-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .ranking-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: var(--light-color);
+        border-radius: 8px;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .ranking-item:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+      }
+
+      .ranking-position {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        margin-right: 1rem;
+      }
+
+      .ranking-info {
+        flex: 1;
+      }
+
+      .ranking-region {
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 0.25rem;
+      }
+
+      .ranking-price {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .ranking-trend {
+        margin-left: auto;
+        font-size: 1.2rem;
+      }
+
+      /* Dashboard régional */
+      .region-dashboard {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        background: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-heavy);
+        width: 90%;
+        max-width: 1000px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .region-dashboard.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .dashboard-header h3 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #666;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: var(--transition);
+      }
+
+      .close-btn:hover {
+        background: var(--light-color);
+        color: var(--danger-color);
+      }
+
+      .dashboard-content {
+        padding: 2rem;
+      }
+
+      .dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-item {
+        background: var(--light-color);
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .stat-label {
+        display: block;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .dashboard-charts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .mini-chart {
+        background: var(--light-color);
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+
+      .mini-chart h4 {
+        color: var(--dark-color);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .mini-chart canvas {
+        width: 100% !important;
+        height: 200px !important;
+      }
+
+      /* Overlay pour le dashboard */
+      .dashboard-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .dashboard-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Responsive pour les nouvelles sections */
+      @media (max-width: 768px) {
         .analytics-section {
-            margin-top: 4rem;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-medium);
+          padding: 1rem;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
+        .charts-container {
+          grid-template-columns: 1fr;
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Barre de recherche */
-        .search-container {
-            margin-bottom: 3rem;
+        .rankings-container {
+          grid-template-columns: 1fr;
         }
 
         .search-box {
-            display: flex;
-            align-items: center;
-            background: var(--light-color);
-            border-radius: 50px;
-            padding: 0.5rem;
-            box-shadow: var(--shadow-light);
-            max-width: 500px;
-            margin: 0 auto;
-            border: 2px solid transparent;
-            transition: var(--transition);
-        }
-
-        .search-box:focus-within {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-        }
-
-        .search-box i {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin: 0 1rem;
+          flex-direction: column;
+          border-radius: 15px;
         }
 
         .search-box input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 1rem;
-            font-size: 1rem;
-            outline: none;
-            color: var(--dark-color);
+          margin: 0.5rem 0;
         }
 
-        .search-box input::placeholder {
-            color: #999;
-            font-style: italic;
-        }
-
-        .search-box button {
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .search-box button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        /* Graphiques */
-        .charts-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .chart-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .chart-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .chart-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .chart-card canvas {
-            width: 100% !important;
-            height: 300px !important;
-        }
-
-        /* Classements */
-        .rankings-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .ranking-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .ranking-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .ranking-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .ranking-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .ranking-item {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            background: var(--light-color);
-            border-radius: 8px;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .ranking-item:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-        }
-
-        .ranking-position {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin-right: 1rem;
-        }
-
-        .ranking-info {
-            flex: 1;
-        }
-
-        .ranking-region {
-            font-weight: 600;
-            color: var(--dark-color);
-            margin-bottom: 0.25rem;
-        }
-
-        .ranking-price {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .ranking-trend {
-            margin-left: auto;
-            font-size: 1.2rem;
-        }
-
-        /* Dashboard régional */
         .region-dashboard {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            background: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-heavy);
-            width: 90%;
-            max-width: 1000px;
-            max-height: 80vh;
-            overflow-y: auto;
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .region-dashboard.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .dashboard-header h3 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #666;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .close-btn:hover {
-            background: var(--light-color);
-            color: var(--danger-color);
-        }
-
-        .dashboard-content {
-            padding: 2rem;
+          width: 95%;
+          max-height: 90vh;
         }
 
         .dashboard-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-item {
-            background: var(--light-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stat-label {
-            display: block;
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-value {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+          grid-template-columns: 1fr;
         }
 
         .dashboard-charts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+          grid-template-columns: 1fr;
         }
-
-        .mini-chart {
-            background: var(--light-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .mini-chart h4 {
-            color: var(--dark-color);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .mini-chart canvas {
-            width: 100% !important;
-            height: 200px !important;
-        }
-
-        /* Overlay pour le dashboard */
-        .dashboard-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .dashboard-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Responsive pour les nouvelles sections */
-        @media (max-width: 768px) {
-            .analytics-section {
-                padding: 1rem;
-            }
-
-            .charts-container {
-                grid-template-columns: 1fr;
-            }
-
-            .rankings-container {
-                grid-template-columns: 1fr;
-            }
-
-            .search-box {
-                flex-direction: column;
-                border-radius: 15px;
-            }
-
-            .search-box input {
-                margin: 0.5rem 0;
-            }
-
-            .region-dashboard {
-                width: 95%;
-                max-height: 90vh;
-            }
-
-            .dashboard-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .dashboard-charts {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Top Header Section -->
     <div class="top-header">
-        <div class="out-box">
-            <div class="inside-box">
-                <div class="col-1">
-                    <span><i class="bx bxs-envelope"></i> info@autosmart.com</span>
-                    <span><i class="bx bxs-phone"></i> +212 650 438 029</span>
-                    <span><i class="bx bxs-alarm"></i> Mon - Sat (08 AM - 11 PM)</span>
-                </div>
-                <div class="col-2">
-                    <a href="/signup/login.html"><i class="bx bx-arrow-to-right"></i> Login</a>
-                    <a href="/signup/logout.html"><i class="bx bxs-user"></i> Register</a>
-                    <span>Follow Us:</span>
-                    <div class="social">
-                        <i class="bx bxl-facebook"></i>
-                        <i class="fa-brands fa-x-twitter" style="font-size: 1.35rem; margin-top: 1.5px;"></i>
-                        <i class="bx bxl-instagram"></i>
-                        <i class="bx bxl-linkedin"></i>
-                    </div>
-                </div>
+      <div class="out-box">
+        <div class="inside-box">
+          <div class="col-1">
+            <span><i class="bx bxs-envelope"></i> info@gmail.com</span>
+            <span><i class="bx bxs-phone"></i> +212 650 438 029</span>
+            <span><i class="bx bxs-alarm"></i> Mon - Sat (08 AM - 11 PM)</span>
+          </div>
+
+          <div class="col-2">
+            <a href="/login_register.html"
+              ><i class="bx bx-arrow-to-right"></i> Login</a
+            >
+            <a href="/login_register.html"
+              ><i class="bx bxs-user"></i> Register</a
+            >
+            <span>Follow Us:</span>
+            <div class="social">
+              <i class="bx bxl-facebook"></i>
+              <i
+                class="fa-brands fa-x-twitter"
+                style="font-size: 1.35rem; margin-top: 1.5px"
+              ></i>
+              <i class="bx bxl-instagram"></i>
+              <i class="bx bxl-linkedin"></i>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Navigation -->
     <header class="header">
-        <div class="logo">
-            <img src="./img/logo.png" alt="AutoSmart Logo" />
+      <div class="logo">
+        <img src="./img/logo.png" alt="AutoSmart Logo" />
+      </div>
+      <nav>
+        <div class="navbar">
+          <ul class="navLinks">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./Buy.html">Buy Car</a></li>
+            <li><a href="/sell.html">Sell Car</a></li>
+            <li><a href="./login_register.html">Login / Register</a></li>
+            <li>
+              <a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
+              <ul class="dropy">
+                <li>
+                  <a href="/calculator.html">Calculator</a>
+                </li>
+                <li>
+                  <a href="/map-prices.html" class="active">Prix par Région</a>
+                </li>
+                <li><a href="/faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
-        <nav>
-            <div class="navbar">
-                <ul class="navLinks">
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="#">Buy Car</a></li>
-                    <li><a href="#">Sell Car</a></li>
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="#">Login / Register</a></li>
-                    <li><a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
-                        <ul class="dropy">
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/team.html">Our Team</a></li>
-                            <li><a href="/price.html">Pricing Plan</a></li>
-                            <li><a href="/calculator.html">Calculator</a></li>
-                            <li><a href="/map-prices.html" class="active">Prix par Région</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="others">
-                <i class="bx bx-cart-plus"></i>
-                <i class="fa-solid fa-cart-plus cart"></i>
-                <i class="fa-solid fa-bars" id="menuBtn"></i>
-            </div>
-        </nav>
+        <div class="others">
+          <i class="bx bx-cart-plus"></i>
+          <i class="fa-solid fa-cart-plus cart"></i>
+          <i class="fa-solid fa-bars" id="menuBtn"></i>
+        </div>
+      </nav>
     </header>
 
     <!-- Map Container -->
     <div class="map-container">
-        <div class="map-header">
-            <h1>Prix des Automobiles par Région</h1>
-            <p>Découvrez les prix moyens des véhicules dans chaque région du Maroc</p>
+      <div class="map-header">
+        <h1>Prix des Automobiles par Région</h1>
+        <p>
+          Découvrez les prix moyens des véhicules dans chaque région du Maroc
+        </p>
+      </div>
+
+      <div class="map-wrapper">
+        <div id="map"></div>
+
+        <div class="legend glass-effect">
+          <h3>Légende des Prix</h3>
+          <div class="legend-item interactive-element">
+            <div class="legend-color" style="background: #ff4444"></div>
+            <span>Très élevé (200,000+ MAD)</span>
+          </div>
+          <div class="legend-item interactive-element">
+            <div class="legend-color" style="background: #ff8800"></div>
+            <span>Élevé (150,000-200,000 MAD)</span>
+          </div>
+          <div class="legend-item interactive-element">
+            <div class="legend-color" style="background: #ffcc00"></div>
+            <span>Moyen (100,000-150,000 MAD)</span>
+          </div>
+          <div class="legend-item interactive-element">
+            <div class="legend-color" style="background: #88cc00"></div>
+            <span>Modéré (80,000-100,000 MAD)</span>
+          </div>
+          <div class="legend-item interactive-element">
+            <div class="legend-color" style="background: #44cc44"></div>
+            <span>Abordable (50,000-80,000 MAD)</span>
+          </div>
         </div>
-        
-        <div class="map-wrapper">
-            <div id="map"></div>
-            
-                         <div class="legend glass-effect">
-                 <h3>Légende des Prix</h3>
-                 <div class="legend-item interactive-element">
-                     <div class="legend-color" style="background: #ff4444;"></div>
-                     <span>Très élevé (200,000+ MAD)</span>
-                 </div>
-                 <div class="legend-item interactive-element">
-                     <div class="legend-color" style="background: #ff8800;"></div>
-                     <span>Élevé (150,000-200,000 MAD)</span>
-                 </div>
-                 <div class="legend-item interactive-element">
-                     <div class="legend-color" style="background: #ffcc00;"></div>
-                     <span>Moyen (100,000-150,000 MAD)</span>
-                 </div>
-                 <div class="legend-item interactive-element">
-                     <div class="legend-color" style="background: #88cc00;"></div>
-                     <span>Modéré (80,000-100,000 MAD)</span>
-                 </div>
-                 <div class="legend-item interactive-element">
-                     <div class="legend-color" style="background: #44cc44;"></div>
-                     <span>Abordable (50,000-80,000 MAD)</span>
-                 </div>
-             </div>
-            
-            <div class="stats-container">
-                <div class="stat-card interactive-element">
-                    <h3>💰 Prix Moyen National</h3>
-                    <div class="price" id="avg-national-price">125,000 MAD</div>
-                </div>
-                <div class="stat-card interactive-element">
-                    <h3>🏆 Région la Plus Chère</h3>
-                    <div class="price" id="most-expensive">Casablanca-Settat</div>
-                </div>
-                <div class="stat-card interactive-element">
-                    <h3>💎 Région la Plus Abordable</h3>
-                    <div class="price" id="least-expensive">Drâa-Tafilalet</div>
-                </div>
-                <div class="stat-card interactive-element">
-                    <h3>🚗 Total Véhicules</h3>
-                    <div class="price" id="total-cars">65,000</div>
-                </div>
+
+        <div class="stats-container">
+          <div class="stat-card interactive-element">
+            <h3>💰 Prix Moyen National</h3>
+            <div class="price" id="avg-national-price">125,000 MAD</div>
+          </div>
+          <div class="stat-card interactive-element">
+            <h3>🏆 Région la Plus Chère</h3>
+            <div class="price" id="most-expensive">Casablanca-Settat</div>
+          </div>
+          <div class="stat-card interactive-element">
+            <h3>💎 Région la Plus Abordable</h3>
+            <div class="price" id="least-expensive">Drâa-Tafilalet</div>
+          </div>
+          <div class="stat-card interactive-element">
+            <h3>🚗 Total Véhicules</h3>
+            <div class="price" id="total-cars">65,000</div>
+          </div>
+        </div>
+
+        <!-- Section Graphiques et Classements -->
+        <div class="analytics-section">
+          <div class="section-header">
+            <h2>📊 Analyses et Tendances</h2>
+            <p>
+              Découvrez les insights détaillés du marché automobile marocain
+            </p>
+          </div>
+
+          <!-- Barre de recherche -->
+          <div class="search-container">
+            <div class="search-box">
+              <i class="bx bx-search"></i>
+              <input
+                type="text"
+                id="region-search"
+                placeholder="Rechercher une région (ex: Agadir, Casablanca...)"
+              />
+              <button id="search-btn">Rechercher</button>
+            </div>
+          </div>
+
+          <!-- Graphiques -->
+          <div class="charts-container">
+            <div class="chart-card">
+              <h3>📈 Prix Moyens par Région</h3>
+              <canvas id="priceChart"></canvas>
             </div>
 
-            <!-- Section Graphiques et Classements -->
-            <div class="analytics-section">
-                <div class="section-header">
-                    <h2>📊 Analyses et Tendances</h2>
-                    <p>Découvrez les insights détaillés du marché automobile marocain</p>
-                </div>
-
-                <!-- Barre de recherche -->
-                <div class="search-container">
-                    <div class="search-box">
-                        <i class="bx bx-search"></i>
-                        <input type="text" id="region-search" placeholder="Rechercher une région (ex: Agadir, Casablanca...)" />
-                        <button id="search-btn">Rechercher</button>
-                    </div>
-                </div>
-
-                <!-- Graphiques -->
-                <div class="charts-container">
-                    <div class="chart-card">
-                        <h3>📈 Prix Moyens par Région</h3>
-                        <canvas id="priceChart"></canvas>
-                    </div>
-                    
-                    <div class="chart-card">
-                        <h3>🥧 Types de Véhicules</h3>
-                        <canvas id="vehicleTypeChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Classements -->
-                <div class="rankings-container">
-                    <div class="ranking-card">
-                        <h3>🏆 Top 5 Régions les Plus Chères</h3>
-                        <div class="ranking-list" id="expensive-ranking">
-                            <!-- Généré par JavaScript -->
-                        </div>
-                    </div>
-                    
-                    <div class="ranking-card">
-                        <h3>💎 Top 5 Régions les Plus Abordables</h3>
-                        <div class="ranking-list" id="affordable-ranking">
-                            <!-- Généré par JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dashboard détaillé (caché par défaut) -->
-                <div class="region-dashboard" id="region-dashboard">
-                    <div class="dashboard-header">
-                        <h3 id="dashboard-title">Dashboard Régional</h3>
-                        <button class="close-btn" id="close-dashboard">
-                            <i class="bx bx-x"></i>
-                        </button>
-                    </div>
-                    <div class="dashboard-content">
-                        <div class="dashboard-stats">
-                            <div class="stat-item">
-                                <span class="stat-label">Prix Moyen</span>
-                                <span class="stat-value" id="dashboard-avg-price">-</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Véhicules Disponibles</span>
-                                <span class="stat-value" id="dashboard-car-count">-</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Tendance</span>
-                                <span class="stat-value" id="dashboard-trend">-</span>
-                            </div>
-                        </div>
-                        <div class="dashboard-charts">
-                            <div class="mini-chart">
-                                <h4>Évolution des Prix (6 mois)</h4>
-                                <canvas id="trendChart"></canvas>
-                            </div>
-                            <div class="mini-chart">
-                                <h4>Marques Populaires</h4>
-                                <canvas id="brandsChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="chart-card">
+              <h3>🥧 Types de Véhicules</h3>
+              <canvas id="vehicleTypeChart"></canvas>
             </div>
+          </div>
+
+          <!-- Classements -->
+          <div class="rankings-container">
+            <div class="ranking-card">
+              <h3>🏆 Top 5 Régions les Plus Chères</h3>
+              <div class="ranking-list" id="expensive-ranking">
+                <!-- Généré par JavaScript -->
+              </div>
+            </div>
+
+            <div class="ranking-card">
+              <h3>💎 Top 5 Régions les Plus Abordables</h3>
+              <div class="ranking-list" id="affordable-ranking">
+                <!-- Généré par JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard détaillé (caché par défaut) -->
+          <div class="region-dashboard" id="region-dashboard">
+            <div class="dashboard-header">
+              <h3 id="dashboard-title">Dashboard Régional</h3>
+              <button class="close-btn" id="close-dashboard">
+                <i class="bx bx-x"></i>
+              </button>
+            </div>
+            <div class="dashboard-content">
+              <div class="dashboard-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Prix Moyen</span>
+                  <span class="stat-value" id="dashboard-avg-price">-</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Véhicules Disponibles</span>
+                  <span class="stat-value" id="dashboard-car-count">-</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Tendance</span>
+                  <span class="stat-value" id="dashboard-trend">-</span>
+                </div>
+              </div>
+              <div class="dashboard-charts">
+                <div class="mini-chart">
+                  <h4>Évolution des Prix (6 mois)</h4>
+                  <canvas id="trendChart"></canvas>
+                </div>
+                <div class="mini-chart">
+                  <h4>Marques Populaires</h4>
+                  <canvas id="brandsChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <div class="footer">
-        <div class="footer-row">
-          <div class="footer-col">
-            <img src="./img/logo2footer.png" alt="AutoSmart Logo">
-            <p class="text">AutoSmart is your trusted partner in finding the perfect vehicle. With three decades of experience, we connect you to quality cars and exceptional service.</p>
-            <span><i class="fa fa-phone"></i>+212 650 438 029</span>
-            <span><i class="fa fa-location-dot"></i>123 Automotive Avenue, Agadir 80000</span>
-            <span><i class="bx bxs-envelope"></i>info@autosmart.com</span>
-          </div>
-          <div class="footer-col">
-            <h5>Quick Links</h5>
-            <a href="/about.html"><i class="fa-solid fa-arrow-right"></i>About Us </a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Testimonials  </a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Terms of Services  </a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy </a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Our Dealers </a>
-  
-          </div>
-  
-           <div class="footer-col">
-            <h5>Support Center</h5>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>FAQ's</a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Affiliates</a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Booking Tips</a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Sell Vehicles  </a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Contact Us </a>
-            <a href="#"><i class="fa-solid fa-arrow-right"></i>Sitemap</a>
-  
-          </div>
-  
-           <div class="footer-col">
-            <h5>Newsletter</h5>
-            <p class="text">Subscribe to our newsletter to receive updates on new arrivals, special offers, and automotive tips.</p>
-            <input type="text" placeholder="Your Email">
-            <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
-  
-          </div>
+      <div class="footer-row">
+        <div class="footer-col">
+          <img src="./img/logo2footer.png" alt="AutoSmart Logo" />
+          <p class="text">
+            AutoSmart is your trusted partner in finding the perfect vehicle.
+            With three decades of experience, we connect you to quality cars and
+            exceptional service.
+          </p>
+          <span><i class="fa fa-phone"></i>+212 650 438 029</span>
+          <span
+            ><i class="fa fa-location-dot"></i>123 Automotive Avenue, Agadir
+            80000</span
+          >
+          <span><i class="bx bxs-envelope"></i>info@autosmart.com</span>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; Copyright 2025 <span> AutoSmart</span> All Right Reserved.</p>
-          <div class="social">
-            <i class="bx bxl-facebook"></i>
-            <i class="bx bxl-linkedin"></i>
-            <i class="bx bxl-instagram"></i>
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="/about.html"
+            ><i class="fa-solid fa-arrow-right"></i>About Us
+          </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Testimonials </a>
+          <a href="#"
+            ><i class="fa-solid fa-arrow-right"></i>Terms of Services
+          </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Our Dealers </a>
         </div>
-  
-        <!-- scroll top button adding-->
-         <a href="#" class="scrollBtn">
-          <i class="bx bxs-chevrons-up"></i>
-         </a>
-       </div>
-       
+
+        <div class="footer-col">
+          <h5>Support Center</h5>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>FAQ's</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Affiliates</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Booking Tips</a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sell Vehicles </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Contact Us </a>
+          <a href="#"><i class="fa-solid fa-arrow-right"></i>Sitemap</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p class="text">
+            Subscribe to our newsletter to receive updates on new arrivals,
+            special offers, and automotive tips.
+          </p>
+          <input type="text" placeholder="Your Email" />
+          <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025 <span> AutoSmart</span> All Right Reserved.</p>
+        <div class="social">
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-linkedin"></i>
+          <i class="bx bxl-instagram"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+
+      <!-- scroll top button adding-->
+      <a href="#" class="scrollBtn">
+        <i class="bx bxs-chevrons-up"></i>
+      </a>
+    </div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <!-- Custom JS -->
     <script src="js/analytics.js"></script>
     <script src="js/map-prices.js"></script>
 
     <!-- Overlay pour le dashboard -->
     <div class="dashboard-overlay" id="dashboard-overlay"></div>
-</body>
+  </body>
 </html>

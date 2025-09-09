@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Calculator Page - AutoSmart</title>
+    <title>FAQ - AutoSmart</title>
 
     <!-- swiper css link from gg-->
     <link
@@ -72,9 +72,9 @@
             <li>
               <a href="#">Pages <i class="fa-solid fa-chevron-down"></i></a>
               <ul class="dropy">
-                <li><a href="/calculator.html" class="active">Calculator</a></li>
+                <li><a href="/calculator.html" >Calculator</a></li>
                 <li><a href="/map-prices.html">Prix par Région</a></li>
-                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/faq.html" class="active" >FAQ</a></li>
               </ul>
             </li>
           </ul>
@@ -87,85 +87,51 @@
       </nav>
     </header>
 
-    <!-- Calculator Page Sec -->
-    <div class="inventory">
-      <h2>Calculator</h2>
-      <div class="link">
-        <a href="./index.html">Home</a>
-        <span>>>></span>
-        <p>Calculator</p>
+    
+
+    <!-- Calculator section -->
+    
+    <!-- FAQ Section -->
+<section class="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-question">How can I buy a car on AutoSmart? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer">
+        <p>You can browse our cars in the "Buy Car" section, filter by your preferences, and contact us directly to finalize your purchase.</p>
       </div>
     </div>
 
-    <!-- Calculator section -->
-    <section class="calculator-section">
-      <div class="calculator">
-        <div class="col-row">
-          <div class="cal-col-1">
-            <h2>Financing Calculator</h2>
-            <div class="inputBx">
-              <input type="number" id="price" placeholder="$ Price" />
-            </div>
-            <div class="box">
-              <div class="inputBx">
-                <input type="number" id="rate" placeholder="% Rate" readonly />
-              </div>
-              <div class="inputBx">
-                <input
-                  type="number"
-                  id="period"
-                  placeholder="Loan Period (months)"
-                />
-              </div>
-            </div>
-            <div class="inputBx">
-              <input
-                type="number"
-                id="downPayment"
-                placeholder="$ Down Payment"
-              />
-            </div>
-
-            <a href="#" id="calculateBtn"
-              >Calculate Now <i class="bx bx-right-arrow-alt"></i
-            ></a>
-
-            <div class="result-box" id="resultBox">
-              <h3>Loan Details</h3>
-              <p>
-                Monthly Payment:
-                <span class="highlight" id="monthlyPayment">$0.00</span>
-              </p>
-              <p>
-                Total Interest:
-                <span class="highlight" id="totalInterest">$0.00</span>
-              </p>
-              <p>
-                Total Payment:
-                <span class="highlight" id="totalPayment">$0.00</span>
-              </p>
-              <p>
-                Applied Interest Rate:
-                <span class="highlight" id="appliedRate">0%</span>
-              </p>
-            </div>
-
-            <div class="interest-info">
-              <p>
-                Interest Rates: &lt;$10,000: 3% | $10,000-$30,000: 5% |
-                &gt;$30,000: 7%
-              </p>
-            </div>
-          </div>
-          <div class="cal-col-2">
-            <img
-              src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-              alt="Sports Car"
-            />
-          </div>
-        </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I sell my car through AutoSmart? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer">
+        <p>Yes, go to the "Sell Car" page, fill in your car details, upload photos, and our team will list it for you.</p>
       </div>
-    </section>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Is AutoSmart available in all regions of Morocco? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer">
+        <p>We currently operate across all major cities in Morocco, and you can check regional prices on our "Prix par Région" page.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do I need to register before buying or selling? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer">
+        <p>Yes, creating an account allows you to securely buy, sell, and track your car transactions.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Does AutoSmart provide car financing? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer">
+        <p>We provide a financing calculator in the "Calculator" page to help you plan your budget, and our partners offer financing options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- footer -->
     <div class="footer">
       <div class="footer-row">

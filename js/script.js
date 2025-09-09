@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const targetTab = button.getAttribute("data-tab");
-      
+
       // Remove active class from all buttons and contents
       tabButtons.forEach((btn) => btn.classList.remove("active"));
       tabContents.forEach((content) => content.classList.remove("active"));
-      
+
       // Add active class to clicked button and corresponding content
       button.classList.add("active");
       document.getElementById(targetTab).classList.add("active");
-      
+
       // Move tab indicator
       if (tabIndicator) {
         if (targetTab === "login") {
@@ -33,12 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Password toggle functionality
   const passwordToggles = document.querySelectorAll(".password-toggle");
-  
+
   passwordToggles.forEach((toggle) => {
     toggle.addEventListener("click", function () {
       const input = this.previousElementSibling;
       const icon = this.querySelector("i");
-      
+
       if (input.type === "password") {
         input.type = "text";
         icon.classList.remove("fa-eye");
@@ -53,7 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Profile picture upload functionality
   const profilePictureInput = document.getElementById("profile-picture-input");
-  const profilePicturePreview = document.getElementById("profile-picture-preview");
+  const profilePicturePreview = document.getElementById(
+    "profile-picture-preview"
+  );
   const profilePictureImg = document.getElementById("profile-picture-img");
 
   if (profilePictureInput && profilePicturePreview) {
@@ -79,7 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const registerPassword = document.getElementById("register-password");
   const passwordRequirements = document.getElementById("password-requirements");
   const confirmPassword = document.getElementById("register-confirm-password");
-  const confirmPasswordValidation = document.getElementById("confirm-password-validation");
+  const confirmPasswordValidation = document.getElementById(
+    "confirm-password-validation"
+  );
 
   if (registerPassword && passwordRequirements) {
     registerPassword.addEventListener("focus", () => {
@@ -96,10 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Password strength calculation
-    registerPassword.addEventListener("input", function() {
+    registerPassword.addEventListener("input", function () {
       const password = this.value;
       const strengthBar = document.getElementById("password-strength-bar");
-      
+
       // Calculate password strength
       let strength = 0;
       let requirements = {
@@ -107,11 +111,11 @@ document.addEventListener("DOMContentLoaded", function () {
         uppercase: /[A-Z]/.test(password),
         lowercase: /[a-z]/.test(password),
         number: /\d/.test(password),
-        special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+        special: /[!@#$%^&*(),.?":{}|<>]/.test(password),
       };
-      
+
       // Update requirement indicators
-      Object.keys(requirements).forEach(req => {
+      Object.keys(requirements).forEach((req) => {
         const reqElement = document.getElementById(`req-${req}`);
         if (reqElement) {
           const icon = reqElement.querySelector("i");
@@ -124,18 +128,18 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       });
-      
+
       // Calculate strength score
       strength += requirements.length ? 20 : 0;
       strength += requirements.uppercase ? 20 : 0;
       strength += requirements.lowercase ? 20 : 0;
       strength += requirements.number ? 20 : 0;
       strength += requirements.special ? 20 : 0;
-      
+
       // Update strength bar
       if (strengthBar) {
         strengthBar.style.setProperty("--strength-width", `${strength}%`);
-        
+
         // Update strength bar color based on score
         if (strength <= 20) {
           strengthBar.style.setProperty("--strength-color", "var(--error)");
@@ -164,17 +168,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function checkPasswordMatch() {
-    if (!registerPassword || !confirmPassword || !confirmPasswordValidation) return;
-    
+    if (!registerPassword || !confirmPassword || !confirmPasswordValidation)
+      return;
+
     const password = registerPassword.value;
     const confirmPass = confirmPassword.value;
-    
+
     if (confirmPass.length === 0) {
       confirmPasswordValidation.textContent = "";
       confirmPasswordValidation.className = "validation-message";
       return;
     }
-    
+
     if (password === confirmPass) {
       confirmPasswordValidation.textContent = "✓ Passwords match";
       confirmPasswordValidation.className = "validation-message valid";
@@ -188,18 +193,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Form animations and interactions
   const formGroups = document.querySelectorAll(".form-group");
-  
+
   formGroups.forEach((group) => {
     const input = group.querySelector(".form-control");
     const label = group.querySelector("label");
-    
+
     if (input && label) {
       // Add focus effects
       input.addEventListener("focus", () => {
         label.style.color = "var(--primary)";
         group.style.transform = "translateY(-2px)";
       });
-      
+
       input.addEventListener("blur", () => {
         label.style.color = "var(--light)";
         group.style.transform = "translateY(0)";
@@ -209,12 +214,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Social login button effects
   const socialButtons = document.querySelectorAll(".social-btn");
-  
+
   socialButtons.forEach((button) => {
     button.addEventListener("mouseenter", function () {
       this.style.transform = "translateY(-3px) scale(1.02)";
     });
-    
+
     button.addEventListener("mouseleave", function () {
       this.style.transform = "translateY(0) scale(1)";
     });
@@ -222,18 +227,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Submit button loading state
   const submitButtons = document.querySelectorAll(".submit-btn");
-  
+
   submitButtons.forEach((button) => {
     button.addEventListener("click", function () {
       if (this.type === "submit") {
         const originalText = this.querySelector("span").textContent;
         const originalIcon = this.querySelector("i").className;
-        
+
         // Show loading state
         this.querySelector("span").textContent = "Processing...";
         this.querySelector("i").className = "fas fa-spinner fa-spin";
         this.disabled = true;
-        
+
         // Simulate processing (remove this in production)
         setTimeout(() => {
           this.querySelector("span").textContent = originalText;
@@ -246,17 +251,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Smooth scroll for anchor links
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  
+
   anchorLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       const targetId = this.getAttribute("href");
       const targetElement = document.querySelector(targetId);
-      
+
       if (targetElement) {
         targetElement.scrollIntoView({
           behavior: "smooth",
-          block: "start"
+          block: "start",
         });
       }
     });
@@ -264,19 +269,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add floating animation to background shapes
   const shapes = document.querySelectorAll(".shape");
-  
+
   shapes.forEach((shape, index) => {
     shape.style.animationDelay = `${index * 2}s`;
   });
 
   // Add parallax effect to floating elements
   const floatingIcons = document.querySelectorAll(".floating-icon");
-  
+
   window.addEventListener("scroll", () => {
     const scrolled = window.pageYOffset;
-    
+
     floatingIcons.forEach((icon, index) => {
-      const speed = 0.5 + (index * 0.1);
+      const speed = 0.5 + index * 0.1;
       icon.style.transform = `translateY(${scrolled * speed}px)`;
     });
   });
@@ -513,106 +518,593 @@ document.addEventListener("DOMContentLoaded", function () {
    ============================= */
 
 const cars = [
-  // ... (your car data remains unchanged)
-  // (Note: Fixed duplicate ID 10 by removing one instance)
   {
     id: 1,
-    name: "BMW M4 Competition",
-    year: 2022,
-    price: 89900,
-    km: "12,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1200",
+    name: "Dacia Duster 1.5 dCi",
+    year: 2020,
+    price: 165000,
+    km: "45,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Très bon état",
+    img: "/img/buy/aut1.png",
   },
   {
     id: 2,
-    name: "Ferrari 488 GTB",
+    name: "Renault Clio 4 1.5 dCi",
     year: 2019,
-    price: 219000,
-    km: "8,500",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200",
+    price: 125000,
+    km: "62,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Rabat",
+    condition: "Très bon état",
+    img: "/img/buy/aut2.png",
   },
   {
     id: 3,
-    name: "Nissan GT-R Premium",
-    year: 2020,
-    price: 99500,
-    km: "22,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1619767886558-efdc259cde1c?q=80&w=1200",
+    name: "Peugeot 208 1.6 BlueHDi",
+    year: 2018,
+    price: 110000,
+    km: "78,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Fès",
+    condition: "Bon état",
+    img: "/img/buy/aut3.png",
   },
   {
     id: 4,
-    name: "Audi RS6 Avant",
-    year: 2021,
-    price: 128700,
-    km: "15,300",
-    gear: "Tiptronic",
-    img: "https://images.unsplash.com/photo-1606661120427-3d230223c3c5?q=80&w=1200",
+    name: "Hyundai Tucson 2.0 CRDi",
+    year: 2017,
+    price: 185000,
+    km: "95,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Marrakech",
+    condition: "Très bon état",
+    img: "/img/buy/aut4.png",
   },
   {
     id: 5,
-    name: "Mercedes-AMG C63 S",
+    name: "Kia Sportage 1.7 CRDi",
     year: 2018,
-    price: 100000,
-    km: "38,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1571601035754-5c927f2d7edc?q=80&w=1200",
+    price: 175000,
+    km: "88,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Agadir",
+    condition: "Très bon état",
+    img: "/img/buy/aut5.png",
   },
   {
     id: 6,
-    name: "Mercedes-AMG C63 S",
-    year: 2018,
-    price: 64200,
-    km: "38,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1571601035754-5c927f2d7edc?q=80&w=1200",
+    name: "Toyota Corolla 1.6",
+    year: 2019,
+    price: 190000,
+    km: "70,000",
+    gear: "Automatique",
+    fuel: "Essence",
+    location: "Tanger",
+    condition: "Excellent",
+    img: "/img/buy/aut6.png",
   },
   {
     id: 7,
-    name: "Mercedes-AMG C63 S",
-    year: 2018,
-    price: 64200,
-    km: "38,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1571601035754-5c927f2d7edc?q=80&w=1200",
+    name: "Volkswagen Golf 7 2.0 TDI",
+    year: 2017,
+    price: 165000,
+    km: "110,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Kénitra",
+    condition: "Bon état",
+    img: "/img/buy/aut7.png",
   },
   {
     id: 8,
-    name: "Mercedes-AMG C63 S",
-    year: 2018,
-    price: 64200,
-    km: "38,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1571601035754-5c927f2d7edc?q=80&w=1200",
+    name: "Mercedes C200d",
+    year: 2016,
+    price: 235000,
+    km: "120,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Très bon état",
+    img: "/img/buy/aut8.png",
   },
   {
     id: 9,
-    name: "Mercedes-AMG C63 S",
-    year: 2018,
-    price: 64200,
-    km: "38,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1571601035754-5c927f2d7edc?q=80&w=1200",
+    name: "BMW 320d",
+    year: 2015,
+    price: 210000,
+    km: "150,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Rabat",
+    condition: "Bon état",
+    img: "/img/buy/aut9.png",
   },
   {
     id: 10,
-    name: "Mercedes-AMG C63 S",
-    year: 2018,
-    price: 64200,
-    km: "38,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1571601035754-5c927f2d7edc?q=80&w=1200",
+    name: "Dacia Logan 1.5 dCi",
+    year: 2019,
+    price: 105000,
+    km: "60,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Settat",
+    condition: "Très bon état",
+    img: "/img/buy/aut10.png",
   },
   {
     id: 11,
-    name: "testy",
+    name: "Audi A3 1.6 TDI",
+    year: 2016,
+    price: 160000,
+    km: "130,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Oujda",
+    condition: "Bon état",
+    img: "/img/buy/aut11.png",
+  },
+  {
+    id: 12,
+    name: "Peugeot 3008 1.5 BlueHDi",
+    year: 2020,
+    price: 260000,
+    km: "55,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Excellent",
+    img: "/img/buy/aut12.png",
+  },
+  {
+    id: 13,
+    name: "Skoda Octavia 2.0 TDI",
     year: 2018,
-    price: 1000000000,
-    km: "38,000",
-    gear: "Automatic",
-    img: "https://images.unsplash.com/photo-1571601035754-5c927f2d7edc?q=80&w=1200",
+    price: 175000,
+    km: "120,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Meknès",
+    condition: "Très bon état",
+    img: "/img/buy/aut13.png",
+  },
+  {
+    id: 14,
+    name: "Honda Civic 1.5 Turbo",
+    year: 2019,
+    price: 215000,
+    km: "68,000",
+    gear: "Automatique",
+    fuel: "Essence",
+    location: "Tanger",
+    condition: "Excellent",
+    img: "/img/buy/aut14.png",
+  },
+  {
+    id: 15,
+    name: "Ford Focus 1.5 TDCi",
+    year: 2017,
+    price: 120000,
+    km: "140,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Tetouan",
+    condition: "Bon état",
+    img: "/img/buy/aut15.png",
+  },
+  {
+    id: 16,
+    name: "Citroën C-Elysée 1.6 HDi",
+    year: 2018,
+    price: 105000,
+    km: "125,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Oujda",
+    condition: "Très bon état",
+    img: "/img/buy/aut16.png",
+  },
+  {
+    id: 17,
+    name: "Toyota Yaris 1.3",
+    year: 2016,
+    price: 115000,
+    km: "155,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Fès",
+    condition: "Bon état",
+    img: "/img/buy/aut17.png",
+  },
+  {
+    id: 18,
+    name: "Range Rover Evoque 2.2 SD4",
+    year: 2016,
+    price: 330000,
+    km: "130,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Très bon état",
+    img: "/img/buy/aut18.png",
+  },
+  {
+    id: 19,
+    name: "Hyundai i10 1.2",
+    year: 2019,
+    price: 98000,
+    km: "60,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Agadir",
+    condition: "Très bon état",
+    img: "/img/buy/aut19.png",
+  },
+  {
+    id: 20,
+    name: "Renault Megane 1.5 dCi",
+    year: 2017,
+    price: 135000,
+    km: "135,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Rabat",
+    condition: "Bon état",
+    img: "/img/buy/aut20.png",
+  },
+  {
+    id: 21,
+    name: "BMW X3 20d",
+    year: 2015,
+    price: 270000,
+    km: "175,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Marrakech",
+    condition: "Bon état",
+    img: "/img/buy/aut21.png",
+  },
+  {
+    id: 22,
+    name: "Volkswagen Polo 1.6",
+    year: 2018,
+    price: 125000,
+    km: "100,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Casablanca",
+    condition: "Très bon état",
+    img: "/img/buy/aut22.png",
+  },
+  {
+    id: 23,
+    name: "Nissan Qashqai 1.5 dCi",
+    year: 2017,
+    price: 165000,
+    km: "130,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Salé",
+    condition: "Bon état",
+    img: "/img/buy/aut23.png",
+  },
+  {
+    id: 24,
+    name: "Seat Leon 2.0 TDI",
+    year: 2018,
+    price: 180000,
+    km: "115,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Mohammedia",
+    condition: "Très bon état",
+    img: "/img/buy/aut24.png",
+  },
+  {
+    id: 25,
+    name: "Renault Captur 1.5 dCi",
+    year: 2019,
+    price: 165000,
+    km: "75,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Marrakech",
+    condition: "Très bon état",
+    img: "/img/buy/aut25.png",
+  },
+  {
+    id: 26,
+    name: "Peugeot 301 1.6 HDi",
+    year: 2017,
+    price: 98000,
+    km: "165,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Bon état",
+    img: "/img/buy/aut26.png",
+  },
+  {
+    id: 27,
+    name: "Dacia Sandero 1.5 dCi",
+    year: 2020,
+    price: 120000,
+    km: "58,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "El Jadida",
+    condition: "Très bon état",
+    img: "/img/buy/aut27.png",
+  },
+  {
+    id: 28,
+    name: "Toyota CH-R Hybrid",
+    year: 2019,
+    price: 295000,
+    km: "72,000",
+    gear: "Automatique",
+    fuel: "Hybride",
+    location: "Rabat",
+    condition: "Excellent",
+    img: "/img/buy/aut28.png",
+  },
+  {
+    id: 29,
+    name: "Kia Picanto 1.2",
+    year: 2018,
+    price: 98000,
+    km: "90,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Fès",
+    condition: "Bon état",
+    img: "/img/buy/aut29.png",
+  },
+  {
+    id: 31,
+    name: "BMW X1 2.0d",
+    year: 2018,
+    price: 285000,
+    km: "95,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Rabat",
+    condition: "Très bon état",
+    img: "/img/buy/aut31.png",
+  },
+  {
+    id: 32,
+    name: "Audi A3 2.0 TDI",
+    year: 2019,
+    price: 320000,
+    km: "68,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Excellent",
+    img: "/img/buy/aut32.png",
+  },
+  {
+    id: 33,
+    name: "Ford Focus 1.6 TDCi",
+    year: 2016,
+    price: 135000,
+    km: "180,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Tanger",
+    condition: "Bon état",
+    img: "/img/buy/aut33.png",
+  },
+  {
+    id: 34,
+    name: "Opel Corsa 1.4",
+    year: 2017,
+    price: 135000,
+    km: "145,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Agadir",
+    condition: "Bon état",
+    img: "/img/buy/aut34.png",
+  },
+  {
+    id: 35,
+    name: "Skoda Octavia 2.0 TDI",
+    year: 2018,
+    price: 195000,
+    km: "110,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Fès",
+    condition: "Très bon état",
+    img: "/img/buy/aut35.png",
+  },
+  {
+    id: 36,
+    name: "Hyundai i20 1.4",
+    year: 2019,
+    price: 125000,
+    km: "85,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Marrakech",
+    condition: "Très bon état",
+    img: "/img/buy/aut36.png",
+  },
+  {
+    id: 37,
+    name: "Kia Rio 1.2",
+    year: 2018,
+    price: 115000,
+    km: "95,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Casablanca",
+    condition: "Bon état",
+    img: "/img/buy/aut37.png",
+  },
+  {
+    id: 38,
+    name: "Renault Clio 1.5 dCi",
+    year: 2017,
+    price: 105000,
+    km: "155,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Salé",
+    condition: "Bon état",
+    img: "/img/buy/aut38.png",
+  },
+  {
+    id: 39,
+    name: "Peugeot 208 1.2 PureTech",
+    year: 2019,
+    price: 140000,
+    km: "72,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Rabat",
+    condition: "Très bon état",
+    img: "/img/buy/aut39.png",
+  },
+  {
+    id: 40,
+    name: "Citroën C3 1.6 HDi",
+    year: 2016,
+    price: 95000,
+    km: "175,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Mohammedia",
+    condition: "Bon état",
+    img: "/img/buy/aut40.png",
+  },
+  {
+    id: 41,
+    name: "Volkswagen Golf 2.0 TDI",
+    year: 2018,
+    price: 220000,
+    km: "105,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Très bon état",
+    img: "/img/buy/aut41.png",
+  },
+  {
+    id: 42,
+    name: "Seat Ibiza 1.0 TSI",
+    year: 2019,
+    price: 135000,
+    km: "68,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "Tanger",
+    condition: "Très bon état",
+    img: "/img/buy/aut42.png",
+  },
+  {
+    id: 43,
+    name: "Nissan Micra 1.2",
+    year: 2017,
+    price: 98000,
+    km: "125,000",
+    gear: "Manuelle",
+    fuel: "Essence",
+    location: "El Jadida",
+    condition: "Bon état",
+    img: "/img/buy/aut43.png",
+  },
+  {
+    id: 44,
+    name: "Toyota Yaris 1.5 Hybrid",
+    year: 2020,
+    price: 185000,
+    km: "45,000",
+    gear: "Automatique",
+    fuel: "Hybride",
+    location: "Marrakech",
+    condition: "Excellent",
+    img: "/img/buy/aut44.png",
+  },
+  {
+    id: 45,
+    name: "Honda Civic 1.6 i-DTEC",
+    year: 2018,
+    price: 195000,
+    km: "115,000",
+    gear: "Manuelle",
+    fuel: "Diesel",
+    location: "Fès",
+    condition: "Très bon état",
+    img: "/img/buy/aut45.png",
+  },
+  {
+    id: 46,
+    name: "Mazda CX-5 2.2 Skyactiv-D",
+    year: 2017,
+    price: 245000,
+    km: "135,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Agadir",
+    condition: "Très bon état",
+    img: "/img/buy/aut46.png",
+  },
+  {
+    id: 47,
+    name: "Subaru Forester 2.0",
+    year: 2016,
+    price: 185000,
+    km: "165,000",
+    gear: "Automatique",
+    fuel: "Essence",
+    location: "Agadir",
+    condition: "Bon état",
+    img: "/img/buy/aut47.png",
+  },
+  {
+    id: 48,
+    name: "Lexus CT 200h",
+    year: 2018,
+    price: 275000,
+    km: "88,000",
+    gear: "Automatique",
+    fuel: "Hybride",
+    location: "Rabat",
+    condition: "Excellent",
+    img: "/img/buy/aut48.png",
+  },
+  {
+    id: 49,
+    name: "Infiniti Q30 2.2d",
+    year: 2017,
+    price: 225000,
+    km: "125,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Tanger",
+    condition: "Très bon état",
+    img: "/img/buy/aut49.png",
+  },
+  {
+    id: 50,
+    name: "Range Rover Evoque 2.2",
+    year: 2016,
+    price: 385000,
+    km: "145,000",
+    gear: "Automatique",
+    fuel: "Diesel",
+    location: "Casablanca",
+    condition: "Très bon état",
+    img: "/img/buy/aut50.png",
   },
 ];
 
@@ -707,7 +1199,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return sum + car.price * item.quantity;
       }, 0);
 
-      cartTotal.textContent = `$${total.toLocaleString()}`;
+      cartTotal.textContent = `${total.toLocaleString("fr-MA")} MAD`;
     }
   }
 
@@ -738,9 +1230,30 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div class="card-body">
             <h3>${car.name}</h3>
-            <p class="meta">${car.year} • ${car.km} km • ${car.gear}</p>
+            <div class="meta-badges">
+              <span class="badge badge-year">${car.year}</span>
+              <span class="badge badge-km">${car.km} km</span>
+              <span class="badge badge-gear">${car.gear}</span>
+              ${
+                car.fuel
+                  ? `<span class="badge badge-fuel">${car.fuel}</span>`
+                  : ""
+              }
+            </div>
+            <div class="meta-badges">
+              ${
+                car.location
+                  ? `<span class="badge badge-location"><i class="bx bx-map"></i> ${car.location}</span>`
+                  : ""
+              }
+              ${
+                car.condition
+                  ? `<span class="badge badge-condition">${car.condition}</span>`
+                  : ""
+              }
+            </div>
             <div class="card-foot">
-              <div class="price">$${car.price.toLocaleString()}</div>
+              <div class="price">${car.price.toLocaleString("fr-MA")} MAD</div>
               <button class="btn add" data-id="${car.id}">Add</button>
             </div>
           </div>`;
@@ -787,6 +1300,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (sort && sort.value) {
       const sortValue = sort.value;
       if (sortValue === "price") filtered.sort((a, b) => a.price - b.price);
+      if (sortValue === "price_desc")
+        filtered.sort((a, b) => b.price - a.price);
       if (sortValue === "year") filtered.sort((a, b) => b.year - a.year);
       if (sortValue === "name")
         filtered.sort((a, b) => a.name.localeCompare(b.name));
@@ -1190,5 +1705,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }s, transform 0.5s ease ${index * 0.1}s`;
       observer.observe(group);
     }
+  });
+});
+
+// FAQ toggle
+document.querySelectorAll(".faq-question").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const item = btn.parentElement;
+    item.classList.toggle("active");
   });
 });
