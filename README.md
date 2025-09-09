@@ -49,6 +49,7 @@ Ouvre simplement `index.html` dans ton navigateur pour tester le site.
 - **FontAwesome & BoxIcons** (icônes)
 
 ---
+![Uploading image.png…]()
 
 ## 🚀 Installation & Utilisation
 
